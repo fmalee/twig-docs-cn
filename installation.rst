@@ -1,7 +1,7 @@
-Installation
+安装
 ============
 
-Install `Composer`_ and run the following command to get the latest version:
+安装 `Composer`_ 然后运行以下命令以获取最新版本的Twig：
 
 .. code-block:: bash
 

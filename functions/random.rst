@@ -1,23 +1,22 @@
 ``random``
 ==========
 
-The ``random`` function returns a random value depending on the supplied
-parameter type:
+``random`` 函数根据提供的参数类型返回一个随机值：
 
-* a random item from a sequence;
-* a random character from a string;
-* a random integer between 0 and the integer parameter (inclusive).
+* 一个序列中的随机项;
+* 一个字符串中的随机字符;
+* 0和整数参数之间的随机整数（包括）。
 
 .. code-block:: jinja
 
-    {{ random(['apple', 'orange', 'citrus']) }} {# example output: orange #}
-    {{ random('ABC') }}                         {# example output: C #}
-    {{ random() }}                              {# example output: 15386094 (works as the native PHP mt_rand function) #}
-    {{ random(5) }}                             {# example output: 3 #}
+    {{ random(['apple', 'orange', 'citrus']) }} {# 示例输出: orange #}
+    {{ random('ABC') }}                         {# 示例输出: C #}
+    {{ random() }}                              {# 示例输出: 15386094 (作为原生PHP的 mt_rand 函数) #}
+    {{ random(5) }}                             {# 示例输出: 3 #}
 
-Arguments
+参数
 ---------
 
-* ``values``: The values
+* ``values``: 值
 
 .. _`mt_rand`: https://secure.php.net/mt_rand

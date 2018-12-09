@@ -1,10 +1,9 @@
 ``if``
 ======
 
-The ``if`` statement in Twig is comparable with the if statements of PHP.
+Twig中的 ``if`` 语句相当于PHP的if语句。
 
-In the simplest form you can use it to test if an expression evaluates to
-``true``:
+在最简单的形式中，你可以使用它来测试表达式的计算结果是否为 ``true``：
 
 .. code-block:: jinja
 
@@ -12,7 +11,7 @@ In the simplest form you can use it to test if an expression evaluates to
         <p>Our website is in maintenance mode. Please, come back later.</p>
     {% endif %}
 
-You can also test if an array is not empty:
+你还可以测试一个数组是否为空：
 
 .. code-block:: jinja
 
@@ -26,10 +25,9 @@ You can also test if an array is not empty:
 
 .. note::
 
-    If you want to test if the variable is defined, use ``if users is
-    defined`` instead.
+    如果要测试该变量是否已定义，请改用 ``if users is defined``。
 
-You can also use ``not`` to check for values that evaluate to ``false``:
+你还可以用 ``not`` 来检查一个值是否等于 ``false``：
 
 .. code-block:: jinja
 
@@ -37,7 +35,7 @@ You can also use ``not`` to check for values that evaluate to ``false``:
         <p>You are not subscribed to our mailing list.</p>
     {% endif %}
 
-For multiple conditions, ``and`` and ``or`` can be used:
+对于多个条件，可以使用 ``and`` 和 ``or``：
 
 .. code-block:: jinja
 
@@ -45,8 +43,7 @@ For multiple conditions, ``and`` and ``or`` can be used:
         <p>It's a nice day for a walk in the park.</p>
     {% endif %}
 
-For multiple branches ``elseif`` and ``else`` can be used like in PHP. You can
-use more complex ``expressions`` there too:
+对于多个分支，可以像PHP一样使用 ``elseif`` 和 ``else``。你也可以使用更复杂的 ``expressions``：
 
 .. code-block:: jinja
 
@@ -60,20 +57,19 @@ use more complex ``expressions`` there too:
 
 .. note::
 
-    The rules to determine if an expression is ``true`` or ``false`` are the
-    same as in PHP; here are the edge cases rules:
+    确定一个表达式是否为 ``true`` 或 ``false`` 的规则与PHP相同; 这里是边缘情况的规则：
 
     ====================== ====================
-    Value                  Boolean evaluation
+    值                      Boolean evaluation
     ====================== ====================
-    empty string           false
-    numeric zero           false
-    NAN (Not A Number)     true
-    INF (Infinity)         true
-    whitespace-only string true
-    string "0" or '0'      false
-    empty array            false
+    空字符串                 false
+    数字0                   false
+    NAN (非数字)            true
+    INF (无穷)              true
+    仅有空格的字符串          true
+    "0" 或 '0' 字符串        false
+    空数组                  false
     null                   false
-    non-empty array        true
-    object                 true
+    非空数组                 true
+    对象                    true
     ====================== ====================

@@ -1,57 +1,49 @@
-Twig Internals
+Twig内部
 ==============
 
-Twig is very extensible and you can easily hack it. Keep in mind that you
-should probably try to create an extension before hacking the core, as most
-features and enhancements can be handled with extensions. This chapter is also
-useful for people who want to understand how Twig works under the hood.
+Twig非常易于扩展，你可以轻松破解(hack)它。
+请记住，你应该尝试在破解核心之前创建扩展，因为大多数功能和增强功能都可以通过扩展来处理。
+本章对于想要了解Twig如何工作的人也很有用。
 
-How does Twig work?
+Twig是如何工作的？
 -------------------
 
-The rendering of a Twig template can be summarized into four key steps:
+一个Twig模板的渲染可归纳为四个关键步骤：
 
-* **Load** the template: If the template is already compiled, load it and go
-  to the *evaluation* step, otherwise:
+* **加载** 模板：如果模板已经编译，请加载它并转到 *评估* 步骤，否则：
 
-  * First, the **lexer** tokenizes the template source code into small pieces
-    for easier processing;
-  * Then, the **parser** converts the token stream into a meaningful tree
-    of nodes (the Abstract Syntax Tree);
-  * Eventually, the *compiler* transforms the AST into PHP code.
+  * 首先，**词法分析器** 将模板源代码标记为小块以便于处理;
+  * 然后，**解析器** 将令牌流转换为有意义的节点树（抽象语法树）;
+  * 最终，**编译器** 将AST转换为PHP代码。
 
-* **Evaluate** the template: It basically means calling the ``display()``
-  method of the compiled template and passing it the context.
+* **评估** 该模板：它基本上意味着调用已编译模板的 ``display()`` 方法并将其传递给上下文。
 
-The Lexer
----------
+词法分析器
+----------
 
-The lexer tokenizes a template source code into a token stream (each token is
-an instance of ``Twig_Token``, and the stream is an instance of
-``Twig_TokenStream``). The default lexer recognizes 13 different token types:
+词法分析器将一个模板源代码标记为令牌流（每个令牌是一个 ``Twig_Token`` 实例，并且流是一个
+``Twig_TokenStream`` 实例）。默认词法分析器能识别13种不同的令牌类型：
 
-* ``Twig_Token::BLOCK_START_TYPE``, ``Twig_Token::BLOCK_END_TYPE``: Delimiters for blocks (``{% %}``)
-* ``Twig_Token::VAR_START_TYPE``, ``Twig_Token::VAR_END_TYPE``: Delimiters for variables (``{{ }}``)
-* ``Twig_Token::TEXT_TYPE``: A text outside an expression;
-* ``Twig_Token::NAME_TYPE``: A name in an expression;
-* ``Twig_Token::NUMBER_TYPE``: A number in an expression;
-* ``Twig_Token::STRING_TYPE``: A string in an expression;
-* ``Twig_Token::OPERATOR_TYPE``: An operator;
-* ``Twig_Token::PUNCTUATION_TYPE``: A punctuation sign;
-* ``Twig_Token::INTERPOLATION_START_TYPE``, ``Twig_Token::INTERPOLATION_END_TYPE``: Delimiters for string interpolation;
-* ``Twig_Token::EOF_TYPE``: Ends of template.
+* ``Twig_Token::BLOCK_START_TYPE``、``Twig_Token::BLOCK_END_TYPE``: 区块的分隔符（``{% %}``）;
+* ``Twig_Token::VAR_START_TYPE``、``Twig_Token::VAR_END_TYPE``: 变量的分隔符（``{{ }}``）;
+* ``Twig_Token::TEXT_TYPE``: 一个表达式之外的文本;
+* ``Twig_Token::NAME_TYPE``: 一个表达式中的名称;
+* ``Twig_Token::NUMBER_TYPE``: 一个表达式中的数字;
+* ``Twig_Token::STRING_TYPE``: 一个表达式中的字符串;
+* ``Twig_Token::OPERATOR_TYPE``: 一个操作符;
+* ``Twig_Token::PUNCTUATION_TYPE``: 一个标点符号;
+* ``Twig_Token::INTERPOLATION_START_TYPE``、``Twig_Token::INTERPOLATION_END_TYPE``: 用于字符串插值的分隔符;
+* ``Twig_Token::EOF_TYPE``: 模板结尾。
 
-You can manually convert a source code into a token stream by calling the
-``tokenize()`` method of an environment::
+你可以通过调用一个环境的 ``tokenize()`` 方法来手动将源代码转换为令牌流::
 
     $stream = $twig->tokenize(new Twig_Source($source, $identifier));
 
-As the stream has a ``__toString()`` method, you can have a textual
-representation of it by echoing the object::
+由于流有一个 ``__toString()`` 方法，你可以通过echoing对象来对其进行文本表示::
 
     echo $stream."\n";
 
-Here is the output for the ``Hello {{ name }}`` template:
+以下是 ``Hello {{ name }}`` 模板的输出：
 
 .. code-block:: text
 
@@ -63,28 +55,25 @@ Here is the output for the ``Hello {{ name }}`` template:
 
 .. note::
 
-    The default lexer (``Twig_Lexer``) can be changed by calling
-    the ``setLexer()`` method::
+    可以通过调用 ``setLexer()`` 方法来更改默认的词法分析器（``Twig_Lexer``）::
 
         $twig->setLexer($lexer);
 
-The Parser
+解析器
 ----------
 
-The parser converts the token stream into an AST (Abstract Syntax Tree), or a
-node tree (an instance of ``Twig_Node_Module``). The core extension defines
-the basic nodes like: ``for``, ``if``, ... and the expression nodes.
+解析器将令牌流转换为一个AST（抽象语法树）或节点树（``Twig_Node_Module`` 的一个实例）。
+核心扩展定义像 ``for``、``if`` 等等的基本节点以及表达式节点。
 
-You can manually convert a token stream into a node tree by calling the
-``parse()`` method of an environment::
+你可以通过调用一个环境的 ``parse()`` 方法将令牌流手动转换为节点树::
 
     $nodes = $twig->parse($stream);
 
-Echoing the node object gives you a nice representation of the tree::
+Echoing节点对象可以很好地表示树::
 
     echo $nodes."\n";
 
-Here is the output for the ``Hello {{ name }}`` template:
+以下是 ``Hello {{ name }}`` 模板的输出：
 
 .. code-block:: text
 
@@ -97,25 +86,20 @@ Here is the output for the ``Hello {{ name }}`` template:
 
 .. note::
 
-    The default parser (``Twig_TokenParser``) can be changed by calling the
-    ``setParser()`` method::
+    可以通过调用 ``setParser()`` 方法来更改默认的解析器（``Twig_TokenParser``）::
 
         $twig->setParser($parser);
 
-The Compiler
+编译器
 ------------
 
-The last step is done by the compiler. It takes a node tree as an input and
-generates PHP code usable for runtime execution of the template.
+最后一步由编译器完成。它将一个节点树作为输入，并生成可用于模板运行时执行的PHP代码。
 
-You can manually compile a node tree to PHP code with the ``compile()`` method
-of an environment::
+你可以使用一个环境的 ``compile()`` 方法手动将节点树编译为PHP代码::
 
     $php = $twig->compile($nodes);
 
-The generated template for a ``Hello {{ name }}`` template reads as follows
-(the actual output can differ depending on the version of Twig you are
-using)::
+一个 ``Hello {{ name }}`` 模板生成的模模板如下所示（实际输出可能因你使用的Twig版本而异）::
 
     /* Hello {{ name }} */
     class __TwigTemplate_1121b6f109fe93ebe8c6e22e3712bceb extends Twig_Template
@@ -132,7 +116,6 @@ using)::
 
 .. note::
 
-    The default compiler (``Twig_Compiler``) can be changed by calling the
-    ``setCompiler()`` method::
+    可以通过调用 ``setCompiler()`` 方法来更改默认的编译器（``Twig_Compiler``）::
 
         $twig->setCompiler($compiler);

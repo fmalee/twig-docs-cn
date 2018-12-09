@@ -1,8 +1,7 @@
 ``attribute``
 =============
 
-The ``attribute`` function can be used to access a "dynamic" attribute of a
-variable:
+``attribute`` 函数可用于访问变量的一个“动态”属性：
 
 .. code-block:: jinja
 
@@ -10,8 +9,7 @@ variable:
     {{ attribute(object, method, arguments) }}
     {{ attribute(array, item) }}
 
-In addition, the ``defined`` test can check for the existence of a dynamic
-attribute:
+此外，可以使用 ``defined`` 测试来检查是否存在一个动态属性：
 
 .. code-block:: jinja
 
@@ -19,5 +17,4 @@ attribute:
 
 .. note::
 
-    The resolution algorithm is the same as the one used for the ``.``
-    notation, except that the item can be any valid expression.
+    该函数的解析算法与用 ``.`` 表示法的算法相同，只是该项可以是任何有效的表达式。

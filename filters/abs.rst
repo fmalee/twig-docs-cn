@@ -1,7 +1,7 @@
 ``abs``
 =======
 
-The ``abs`` filter returns the absolute value.
+``abs`` 过滤器返回值得绝对值。
 
 .. code-block:: jinja
 
@@ -9,10 +9,10 @@ The ``abs`` filter returns the absolute value.
 
     {{ number|abs }}
 
-    {# outputs 5 #}
+    {# 输出： 5 #}
 
 .. note::
 
-    Internally, Twig uses the PHP `abs`_ function.
+    在内部，Twig使用PHP的 `abs`_ 函数。
 
 .. _`abs`: https://secure.php.net/abs

@@ -1,11 +1,8 @@
 ``block``
 =========
 
-Blocks are used for inheritance and act as placeholders and replacements at
-the same time. They are documented in detail in the documentation for the
-:doc:`extends<../tags/extends>` tag.
+区块用于继承，并同时充当占位符和替换。它们在 :doc:`extends<../tags/extends>` 标签的文档中有详细记录 。
 
-Block names should consist of alphanumeric characters, and underscores. Dashes
-are not permitted.
+区块名称应包含字母数字字符和下划线。不允许有破折号。
 
 .. seealso:: :doc:`block<../functions/block>`, :doc:`parent<../functions/parent>`, :doc:`use<../tags/use>`, :doc:`extends<../tags/extends>`

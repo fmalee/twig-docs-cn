@@ -1,12 +1,12 @@
 ``nl2br``
 =========
 
-The ``nl2br`` filter inserts HTML line breaks before all newlines in a string:
+``nl2br`` 过滤器在一个字符串中的所有换行符之前插入HTML换行：
 
 .. code-block:: jinja
 
     {{ "I like Twig.\nYou will like it too."|nl2br }}
-    {# outputs
+    {# 输出：
 
         I like Twig.<br />
         You will like it too.
@@ -15,5 +15,4 @@ The ``nl2br`` filter inserts HTML line breaks before all newlines in a string:
 
 .. note::
 
-    The ``nl2br`` filter pre-escapes the input before applying the
-    transformation.
+    在应用转换之前，``nl2br`` 过滤器会预先转义输入。

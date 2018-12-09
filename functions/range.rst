@@ -1,7 +1,7 @@
 ``range``
 =========
 
-Returns a list containing an arithmetic progression of integers:
+返回一个包含整数算术级数（arithmetic progression）的列表：
 
 .. code-block:: jinja
 
@@ -9,10 +9,9 @@ Returns a list containing an arithmetic progression of integers:
         {{ i }},
     {% endfor %}
 
-    {# outputs 0, 1, 2, 3, #}
+    {# 输出： 0, 1, 2, 3, #}
 
-When step is given (as the third parameter), it specifies the increment (or
-decrement for negative values):
+当第三个参数被传递时，它指定了增量（或负值的减量）：
 
 .. code-block:: jinja
 
@@ -20,12 +19,11 @@ decrement for negative values):
         {{ i }},
     {% endfor %}
 
-    {# outputs 0, 2, 4, 6, #}
+    {# 输出： 0, 2, 4, 6, #}
 
 .. note::
 
-    Note that if the start is greater than the end, ``range`` assumes a step of
-    ``-1``:
+    请注意，如果开头大于结尾，则 ``range`` 使用 ``-1`` 作为步数(step)：
 
     .. code-block:: jinja
 
@@ -35,8 +33,7 @@ decrement for negative values):
 
         {# outputs 3, 2, 1, 0, #}
 
-The Twig built-in ``..`` operator is just syntactic sugar for the ``range``
-function (with a step of ``1``, or ``-1`` if the start is greater than the end):
+Twig内置的 ``..`` 运算符只是 ``range`` 函数的语法糖（步数为 ``1``，如果开头大于结尾，则为 ``-1``）：
 
 .. code-block:: jinja
 
@@ -46,13 +43,13 @@ function (with a step of ``1``, or ``-1`` if the start is greater than the end):
 
 .. tip::
 
-    The ``range`` function works as the native PHP `range`_ function.
+    ``range`` 函数使用的是原生的用作本机PHP `range`_  函数。
 
-Arguments
+参数
 ---------
 
-* ``low``:  The first value of the sequence.
-* ``high``: The highest possible value of the sequence.
-* ``step``: The increment between elements of the sequence.
+* ``low``:  序列的第一个值。
+* ``high``: 序列的最高值。
+* ``step``: 序列元素之间的增量。
 
 .. _`range`: https://secure.php.net/range

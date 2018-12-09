@@ -1,7 +1,7 @@
 ``divisible by``
 ================
 
-``divisible by`` checks if a variable is divisible by a number:
+``divisible by`` 检查一个变量是否可被一个数字整除：
 
 .. code-block:: jinja
 

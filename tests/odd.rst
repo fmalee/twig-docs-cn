@@ -1,7 +1,7 @@
 ``odd``
 =======
 
-``odd`` returns ``true`` if the given number is odd:
+如果给定的数字是奇数，则 ``odd`` 返回 ``true``：
 
 .. code-block:: jinja
 

@@ -1,7 +1,7 @@
 ``flush``
 =========
 
-The ``flush`` tag tells Twig to flush the output buffer:
+``flush`` 标签告诉Twig刷新输出缓冲区：
 
 .. code-block:: jinja
 
@@ -9,6 +9,6 @@ The ``flush`` tag tells Twig to flush the output buffer:
 
 .. note::
 
-    Internally, Twig uses the PHP `flush`_ function.
+    在内部，Twig使用PHP的 `flush`_ 函数。
 
 .. _`flush`: https://secure.php.net/flush

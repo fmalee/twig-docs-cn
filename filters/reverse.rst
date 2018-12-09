@@ -1,7 +1,7 @@
 ``reverse``
 ===========
 
-The ``reverse`` filter reverses a sequence, a mapping, or a string:
+``reverse`` 过滤器反转一个序列、映射或者字符串：
 
 .. code-block:: jinja
 
@@ -15,8 +15,8 @@ The ``reverse`` filter reverses a sequence, a mapping, or a string:
 
 .. tip::
 
-    For sequences and mappings, numeric keys are not preserved. To reverse
-    them as well, pass ``true`` as an argument to the ``reverse`` filter:
+    对于序列和映射，反转时不保留其数字键。如果要保留它们的键，请将 ``true``
+    作为参数传递给 ``reverse`` 过滤器：
 
     .. code-block:: jinja
 
@@ -24,21 +24,21 @@ The ``reverse`` filter reverses a sequence, a mapping, or a string:
             {{ key }}: {{ value }}
         {%- endfor %}
 
-        {# output: 0: c    1: b    2: a #}
+        {# 输出: 0: c    1: b    2: a #}
 
         {% for key, value in {1: "a", 2: "b", 3: "c"}|reverse(true) %}
             {{ key }}: {{ value }}
         {%- endfor %}
 
-        {# output: 3: c    2: b    1: a #}
+        {# 输出: 3: c    2: b    1: a #}
 
 .. note::
 
-    It also works with objects implementing the `Traversable`_ interface.
+    它还适用于实现了 `Traversable`_ 接口的对象。
 
-Arguments
+参数
 ---------
 
-* ``preserve_keys``: Preserve keys when reversing a mapping or a sequence.
+* ``preserve_keys``: 在反转映射或序列时保留键。
 
 .. _`Traversable`: https://secure.php.net/Traversable

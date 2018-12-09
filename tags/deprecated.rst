@@ -2,10 +2,10 @@
 ==============
 
 .. versionadded:: 1.36 and 2.6
-    The ``deprecated`` tag was added in Twig 1.36 and 2.6.
+    在Twig1.36和2.6中添加了 ``deprecated`` 标签。
 
-Twig generates a deprecation notice (via a call to the ``trigger_error()``
-PHP function) where the ``deprecated`` tag is used in a template:
+如果在一个模板中使用 ``deprecated`` 标签，Twig会生成一个弃用通知（通过调用PHP函数
+``trigger_error()``）：
 
 .. code-block:: jinja
 
@@ -13,7 +13,7 @@ PHP function) where the ``deprecated`` tag is used in a template:
     {% deprecated 'The "base.twig" template is deprecated, use "layout.twig" instead.' %}
     {% extends 'layout.twig' %}
 
-Also you can deprecate a block in the following way:
+你还可以通过以下方式来弃用一个区块：
 
 .. code-block:: jinja
 
@@ -26,5 +26,5 @@ Also you can deprecate a block in the following way:
         Hey you!
     {% endblock %}
 
-Note that by default, the deprecation notices are silenced and never displayed nor logged.
-See :ref:`deprecation-notices` to learn how to handle them.
+请注意，默认情况下，弃用通知处于静默状态，从不显示或记录。
+请参阅 :ref:`deprecation-notices` 以了解如何处理它们。

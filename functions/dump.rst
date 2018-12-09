@@ -1,9 +1,7 @@
 ``dump``
 ========
 
-The ``dump`` function dumps information about a template variable. This is
-mostly useful to debug a template that does not behave as expected by
-introspecting its variables:
+``dump`` 函数转储有关模板变量的信息。这对于通过内省其变量来调试不符合预期的模板非常有用：
 
 .. code-block:: jinja
 
@@ -11,9 +9,8 @@ introspecting its variables:
 
 .. note::
 
-    The ``dump`` function is not available by default. You must add the
-    ``Twig_Extension_Debug`` extension explicitly when creating your Twig
-    environment::
+    默认情况下，``dump`` 功能不可用。
+    你必须在创建Twig环境时显式添加 ``Twig_Extension_Debug`` 扩展::
 
         $twig = new Twig_Environment($loader, array(
             'debug' => true,
@@ -21,12 +18,10 @@ introspecting its variables:
         ));
         $twig->addExtension(new Twig_Extension_Debug());
 
-    Even when enabled, the ``dump`` function won't display anything if the
-    ``debug`` option on the environment is not enabled (to avoid leaking debug
-    information on a production server).
+    即使启用了，如果未启用环境中的 ``debug``
+    选项（以避免在生产服务器上泄漏调试信息），``dump`` 函数也不会显示任何内容。
 
-In an HTML context, wrap the output with a ``pre`` tag to make it easier to
-read:
+可以在一个HTML上下文中使用一个 ``pre`` 标签来封装输出以使其更易于阅读：
 
 .. code-block:: jinja
 
@@ -36,18 +31,16 @@ read:
 
 .. tip::
 
-    Using a ``pre`` tag is not needed when `XDebug`_ is enabled and
-    ``html_errors`` is ``on``; as a bonus, the output is also nicer with
-    XDebug enabled.
+    已启用 `XDebug`_ 并且 ``html_errors`` 为  ``on`` 时，不需要使用 ``pre``
+    标签; 而且在启用XDebug的情况下输出也更友好。
 
-You can debug several variables by passing them as additional arguments:
+你可以通过将变量作为附加参数传递来调试多个变量：
 
 .. code-block:: jinja
 
     {{ dump(user, categories) }}
 
-If you don't pass any value, all variables from the current context are
-dumped:
+如果未传递任何值，则转储当前上下文中的所有变量：
 
 .. code-block:: jinja
 
@@ -55,12 +48,12 @@ dumped:
 
 .. note::
 
-    Internally, Twig uses the PHP `var_dump`_ function.
+    在内部，Twig使用PHP的 `var_dump`_ 函数。
 
-Arguments
+参数
 ---------
 
-* ``context``: The context to dump
+* ``context``: 要转储的上下文
 
 .. _`XDebug`:   https://xdebug.org/docs/display
 .. _`var_dump`: https://secure.php.net/var_dump

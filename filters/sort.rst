@@ -1,7 +1,7 @@
 ``sort``
 ========
 
-The ``sort`` filter sorts an array:
+``sort`` 过滤器对一个数组进行排序：
 
 .. code-block:: jinja
 
@@ -11,8 +11,6 @@ The ``sort`` filter sorts an array:
 
 .. note::
 
-    Internally, Twig uses the PHP `asort`_ function to maintain index
-    association. It supports Traversable objects by transforming
-    those to arrays.
+    在内部，Twig使用PHP的 `asort`_ 函数来维护索引关联。它通过将Traversable转换为数组来支持它们。
 
 .. _`asort`: https://secure.php.net/asort

@@ -1,9 +1,8 @@
 ``convert_encoding``
 ====================
 
-The ``convert_encoding`` filter converts a string from one encoding to
-another. The first argument is the expected output charset and the second one
-is the input charset:
+``convert_encoding`` 过滤器将一个字符串从一个编码转换到另一个编码。
+第一个参数是预期的输出字符集，第二个参数是输入字符集：
 
 .. code-block:: jinja
 
@@ -11,12 +10,12 @@ is the input charset:
 
 .. note::
 
-    This filter relies on the `iconv`_ extension.
+    此过滤器依赖 `iconv`_ 扩展名。
 
-Arguments
+参数
 ---------
 
-* ``to``:   The output charset
-* ``from``: The input charset
+* ``to``:   输出字符集
+* ``from``: 输入字符集
 
 .. _`iconv`: https://secure.php.net/iconv

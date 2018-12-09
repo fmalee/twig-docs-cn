@@ -1,38 +1,36 @@
 ``trim``
 ========
 
-The ``trim`` filter strips whitespace (or other characters) from the beginning
-and end of a string:
+``trim`` 过滤器用于剥离字符串的开头和末尾的空格（或其它字符）：
 
 .. code-block:: jinja
 
     {{ '  I like Twig.  '|trim }}
 
-    {# outputs 'I like Twig.' #}
+    {# 输出： 'I like Twig.' #}
 
     {{ '  I like Twig.'|trim('.') }}
 
-    {# outputs '  I like Twig' #}
+    {# 输出： '  I like Twig' #}
 
     {{ '  I like Twig.  '|trim(side='left') }}
 
-    {# outputs 'I like Twig.  ' #}
+    {# 输出： 'I like Twig.  ' #}
 
     {{ '  I like Twig.  '|trim(' ', 'right') }}
 
-    {# outputs '  I like Twig.' #}
+    {# 输出： '  I like Twig.' #}
 
 .. note::
 
-    Internally, Twig uses the PHP `trim`_, `ltrim`_, and `rtrim`_ functions.
+    在内部，Twig使用PHP的 `trim`_、`ltrim`_ 以及 `rtrim`_ 函数。
 
-Arguments
+参数
 ---------
 
-* ``character_mask``: The characters to strip
+* ``character_mask``: 要剥离的字符
 
-* ``side``: The default is to strip from the left and the right (`both`) sides, but `left`
-  and `right` will strip from either the left side or right side only
+* ``side``: 默认是从左侧和右侧（`两侧`）剥离，但 `左侧` 和 `右侧` 仅从左侧或右侧剥离
 
 .. _`trim`: https://secure.php.net/trim
 .. _`ltrim`: https://secure.php.net/ltrim

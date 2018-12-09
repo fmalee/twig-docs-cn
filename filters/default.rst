@@ -1,8 +1,7 @@
 ``default``
 ===========
 
-The ``default`` filter returns the passed default value if the value is
-undefined or empty, otherwise the value of the variable:
+如果值未定义或为空，则 ``default`` 过滤器返回传递的默认值，否则返回变量的值：
 
 .. code-block:: jinja
 
@@ -14,9 +13,7 @@ undefined or empty, otherwise the value of the variable:
 
     {{ ''|default('passed var is empty')  }}
 
-When using the ``default`` filter on an expression that uses variables in some
-method calls, be sure to use the ``default`` filter whenever a variable can be
-undefined:
+在某些方法调用的使用变量的表达式中使用 ``default`` 过滤器时，请确保在未定义一个变量时使用 ``default`` 过滤器：
 
 .. code-block:: jinja
 
@@ -24,10 +21,10 @@ undefined:
 
 .. note::
 
-    Read the documentation for the :doc:`defined<../tests/defined>` and
-    :doc:`empty<../tests/empty>` tests to learn more about their semantics.
+    阅读 :doc:`defined<../tests/defined>` 和 :doc:`empty<../tests/empty>`
+    测试的文档，以了解有关其语义的更多信息。
 
-Arguments
+参数
 ---------
 
-* ``default``: The default value
+* ``default``: 默认值

@@ -1,25 +1,22 @@
 ``set``
 =======
 
-Inside code blocks you can also assign values to variables. Assignments use
-the ``set`` tag and can have multiple targets.
+在代码块内部，你还可以为变量赋值。``set`` 标签可以进行赋值，同时可以有多个目标。
 
-Here is how you can assign the ``bar`` value to the ``foo`` variable:
+以下是如何把 ``bar`` 赋值给 ``foo`` 变量：
 
 .. code-block:: jinja
 
     {% set foo = 'bar' %}
 
-After the ``set`` call, the ``foo`` variable is available in the template like
-any other ones:
+在调用 ``set`` 后，``foo`` 变量就像模板中的任何其他变量一个可供使用：
 
 .. code-block:: jinja
 
-    {# displays bar #}
+    {# 显示 bar #}
     {{ foo }}
 
-The assigned value can be any valid :ref:`Twig expressions
-<twig-expressions>`:
+指定的值可以是任何有效的 :ref:`Twig表达式 <twig-expressions>`：
 
 .. code-block:: jinja
 
@@ -27,18 +24,18 @@ The assigned value can be any valid :ref:`Twig expressions
     {% set foo = {'foo': 'bar'} %}
     {% set foo = 'foo' ~ 'bar' %}
 
-Several variables can be assigned in one block:
+可以在一个区块中同时赋值多个变量：
 
 .. code-block:: jinja
 
     {% set foo, bar = 'foo', 'bar' %}
 
-    {# is equivalent to #}
+    {# 等效于 #}
 
     {% set foo = 'foo' %}
     {% set bar = 'bar' %}
 
-The ``set`` tag can also be used to 'capture' chunks of text:
+``set`` 标签也可以用于“捕获”文本块：
 
 .. code-block:: jinja
 
@@ -50,13 +47,11 @@ The ``set`` tag can also be used to 'capture' chunks of text:
 
 .. caution::
 
-    If you enable automatic output escaping, Twig will only consider the
-    content to be safe when capturing chunks of text.
+    如果启用了自动输出转义，Twig将仅在捕获文本块时认为内容是安全的。
 
 .. note::
 
-    Note that loops are scoped in Twig; therefore a variable declared inside a
-    ``for`` loop is not accessible outside the loop itself:
+    请注意，循环在Twig中有作用域; 因此，在循环外部无法访问一个在 ``for`` 循环内声明的变量：
 
     .. code-block:: jinja
 
@@ -64,9 +59,9 @@ The ``set`` tag can also be used to 'capture' chunks of text:
             {% set foo = item %}
         {% endfor %}
 
-        {# foo is NOT available #}
+        {# foo 在这里不可用 #}
 
-    If you want to access the variable, just declare it before the loop:
+    如果要访问变量，只需在循环之前声明它：
 
     .. code-block:: jinja
 
@@ -75,4 +70,4 @@ The ``set`` tag can also be used to 'capture' chunks of text:
             {% set foo = item %}
         {% endfor %}
 
-        {# foo is available #}
+        {# foo 在这里可用 #}

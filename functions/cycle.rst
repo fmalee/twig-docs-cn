@@ -1,7 +1,7 @@
 ``cycle``
 =========
 
-The ``cycle`` function cycles on an array of values:
+``cycle`` 函数会循环的使用一个数组的值：
 
 .. code-block:: jinja
 
@@ -12,7 +12,7 @@ The ``cycle`` function cycles on an array of values:
         {{ cycle(['odd', 'even'], loop.index0) }}
     {% endfor %}
 
-The array can contain any number of values:
+该数组可以包含任意数量的值：
 
 .. code-block:: jinja
 
@@ -22,7 +22,7 @@ The array can contain any number of values:
         {{ cycle(fruits, i) }}
     {% endfor %}
 
-Arguments
+参数
 ---------
 
-* ``position``: The cycle position
+* ``position``: 循环位置

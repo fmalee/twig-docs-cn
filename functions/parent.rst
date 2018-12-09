@@ -1,8 +1,7 @@
 ``parent``
 ==========
 
-When a template uses inheritance, it's possible to render the contents of the
-parent block when overriding a block by using the ``parent`` function:
+当一个模板使用继承时，可以使用 ``parent`` 函数在重写区块时渲染父区块的内容：
 
 .. code-block:: jinja
 
@@ -14,7 +13,6 @@ parent block when overriding a block by using the ``parent`` function:
         {{ parent() }}
     {% endblock %}
 
-The ``parent()`` call will return the content of the ``sidebar`` block as
-defined in the ``base.html`` template.
+该 ``parent()`` 调用将返回 ``base.html`` 模板中定义的 ``sidebar`` 区块的内容。
 
 .. seealso:: :doc:`extends<../tags/extends>`, :doc:`block<../functions/block>`, :doc:`block<../tags/block>`

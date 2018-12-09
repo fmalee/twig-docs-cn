@@ -1,30 +1,27 @@
-Deprecated Features
+弃用功能
 ===================
 
-This document lists deprecated features in Twig 2.x. Deprecated features are
-kept for backward compatibility and removed in the next major release (a
-feature that was deprecated in Twig 2.x is removed in Twig 3.0).
+本文档列出了Twig 2.x中不推荐使用的功能。
+保留弃用的功能是为了向后兼容，并在下一个主要版本中删除（在Twig 3.0中删除了Twig 2.x中弃用的功能）。
 
-Inheritance
+继承
 -----------
 
-* Defining a "block" definition in a non-capturing block in a child template is
-  deprecated since Twig 2.5.0. In Twig 3.0, it will throw a
-  ``Twig_Error_Syntax`` exception. It does not work anyway, so most projects
-  won't need to do anything to upgrade.
+* 从Twig 2.5.0开始，不推荐在子模板中的非捕获区块中定义“区块”定义。
+  在Twig 3.0中，它会抛出一个 ``Twig_Error_Syntax`` 异常。
+  它无论如何都不起作用，所以大多数项目都不需要做任何升级。
 
-Tags
+标签
 ----
 
-* Using the ``spaceless`` tag at the root level of a child template is
-  deprecated in Twig 2.5.0. This does not work as one would expect it to work
-  anyway. In Twig 3.0, it will throw a ``Twig_Error_Syntax`` exception.
+* 在Twig 2.5.0中不推荐使用子模板根级别的 ``spaceless`` 标记。
+  这不起作用，因为无论如何人们都希望它能够工作。
+  在Twig 3.0中，它会抛出一个 ``Twig_Error_Syntax`` 异常。
 
-Final Classes
+最终类
 -------------
 
-The following classes are marked as ``@final`` in Twig 2 and will be final in
-3.0:
+以下类在Twig 2中标记为 ``@final``，并且在3.0中是最终的：
 
 * ``Twig_Node_Module``
 * ``Twig_Filter``

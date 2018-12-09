@@ -1,8 +1,7 @@
 ``constant``
 ============
 
-``constant`` checks if a variable has the exact same value as a constant. You
-can use either global constants or class constants:
+``constant`` 检查一个变量是否与一个常量具有完全相同的值。你可以使用全局常量或类常量：
 
 .. code-block:: jinja
 
@@ -10,7 +9,7 @@ can use either global constants or class constants:
         the status attribute is exactly the same as Post::PUBLISHED
     {% endif %}
 
-You can test constants from object instances as well:
+你也可以测试对象实例中的常量：
 
 .. code-block:: jinja
 

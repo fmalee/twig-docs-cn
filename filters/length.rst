@@ -3,18 +3,15 @@
 
 .. versionadded:: 2.3
 
-    Support for the ``__toString()`` magic method has been added in Twig 2.3.
+    在Twig2.3中添加了对 ``__toString()`` 魔术方法的支持。
 
-The ``length`` filter returns the number of items of a sequence or mapping, or
-the length of a string.
+``length`` 过滤器返回一个序列或映射的项的数量，或一个字符串的长度。
 
-For objects that implement the ``Countable`` interface, ``length`` will use the
-return value of the ``count()`` method.
+对于实现了 ``Countable`` 接口的对象，``length`` 过滤器将使用 ``count()`` 方法返回的值。
 
-For objects that implement the ``__toString()`` magic method (and not ``Countable``),
-it will return the length of the string provided by that method.
+对于实现了 ``__toString()`` 魔术方法（而不是 ``Countable``）的对象，它将返回该方法提供的字符串的长度。
 
-For objects that implement the ``IteratorAggregate`` interface, ``length`` will use the return value of the ``iterator_count()`` method.
+对于实现了 ``IteratorAggregate`` 接口的对象，``length`` 过滤器将使用 ``iterator_count()`` 方法返回的值。
 
 .. code-block:: jinja
 

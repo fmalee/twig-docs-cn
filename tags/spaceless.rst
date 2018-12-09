@@ -1,8 +1,7 @@
 ``spaceless``
 =============
 
-Use the ``spaceless`` tag to remove whitespace *between HTML tags*, not
-whitespace within HTML tags or whitespace in plain text:
+使用 ``spaceless`` 标签可以删除 *HTML标签之间* 的空格，但不是HTML标签中的空格或纯文本中的空格：
 
 .. code-block:: jinja
 
@@ -12,26 +11,20 @@ whitespace within HTML tags or whitespace in plain text:
         </div>
     {% endspaceless %}
 
-    {# output will be <div><strong>foo</strong></div> #}
+    {# 输出会是：<div><strong>foo</strong></div> #}
 
-This tag is not meant to "optimize" the size of the generated HTML content but
-merely to avoid extra whitespace between HTML tags to avoid browser rendering
-quirks under some circumstances.
+此标签并非旨在“优化”生成的HTML内容的大小，而仅仅是为了避免HTML标签之间的额外空格，以避免浏览器在某些情况下渲染怪异(quirk)。
 
 .. tip::
 
-    If you want to optimize the size of the generated HTML content, gzip
-    compress the output instead.
+    如果要优化生成的HTML内容的大小，请使用gzip来压缩输出。
 
 .. tip::
 
-    If you want to create a tag that actually removes all extra whitespace in
-    an HTML string, be warned that this is not as easy as it seems to be
-    (think of ``textarea`` or ``pre`` tags for instance). Using a third-party
-    library like Tidy is probably a better idea.
+    如果你想创建一个实际删除一个HTML字符串中所有额外空格的标签，请注意这并不像它看起来那么容易（想一下
+    ``textarea`` 或 ``pre`` 示例）。使用像Tidy这样的第三方库可能是个更好的主意。
 
 .. tip::
 
-    For more information on whitespace control, read the
-    :ref:`dedicated section <templates-whitespace-control>` of the documentation and learn how
-    you can also use the whitespace control modifier on your tags.
+    有关空格控制的更多信息，请阅读文档的
+    :ref:`专门章节 <templates-whitespace-control>`，并了解如何在标签上使用空格来控制修饰符。

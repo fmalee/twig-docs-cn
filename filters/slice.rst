@@ -1,19 +1,19 @@
 ``slice``
 ===========
 
-The ``slice`` filter extracts a slice of a sequence, a mapping, or a string:
+``slice`` 过滤器提取一个序列、映射或字符串的一个切片：
 
 .. code-block:: jinja
 
     {% for i in [1, 2, 3, 4, 5]|slice(1, 2) %}
-        {# will iterate over 2 and 3 #}
+        {# 将会迭代 2 和 3 #}
     {% endfor %}
 
     {{ '12345'|slice(1, 2) }}
 
-    {# outputs 23 #}
+    {# 输出： 23 #}
 
-You can use any valid expression for both the start and the length:
+你可以对起始和长度使用任何有效表达式：
 
 .. code-block:: jinja
 
@@ -21,7 +21,7 @@ You can use any valid expression for both the start and the length:
         {# ... #}
     {% endfor %}
 
-As syntactic sugar, you can also use the ``[]`` notation:
+作为语法糖，你也可以使用 ``[]`` 符号：
 
 .. code-block:: jinja
 
@@ -29,38 +29,32 @@ As syntactic sugar, you can also use the ``[]`` notation:
         {# ... #}
     {% endfor %}
 
-    {{ '12345'[1:2] }} {# will display "23" #}
+    {{ '12345'[1:2] }} {# 显示： "23" #}
 
-    {# you can omit the first argument -- which is the same as 0 #}
-    {{ '12345'[:2] }} {# will display "12" #}
+    {# 你可以省略第一个参数 - 它与0相同 #}
+    {{ '12345'[:2] }} {# 输出： "12" #}
 
-    {# you can omit the last argument -- which will select everything till the end #}
-    {{ '12345'[2:] }} {# will display "345" #}
+    {# 你可以省略最后一个参数 - 它会选择一直到最后 #}
+    {{ '12345'[2:] }} {# 输出： "345" #}
 
-The ``slice`` filter works as the `array_slice`_ PHP function for arrays and
-`mb_substr`_ for strings with a fallback to `substr`_.
+``slice`` 滤器操作数组时使用PHP的 `array_slice`_ 函数，操作字符串时使用PHP的 `substr`_。
 
-If the start is non-negative, the sequence will start at that start in the
-variable. If start is negative, the sequence will start that far from the end
-of the variable.
+如果起始是非负数，则序列将从变量的起始处开始。如果起始为负数，则序列将从变量的末尾开始。
 
-If length is given and is positive, then the sequence will have up to that
-many elements in it. If the variable is shorter than the length, then only the
-available variable elements will be present. If length is given and is
-negative then the sequence will stop that many elements from the end of the
-variable. If it is omitted, then the sequence will have everything from offset
-up until the end of the variable.
+如果长度已给定并且是正数，则序列将包含足够的变量元素。如果变量短于给定长度，则仅保存可用的变量元素。
+如果长度已给定并且为负数，则序列将从变量末尾的足够元素处停止。
+如果省略，那么序列将包含从偏移开始至变量末尾的所有元素。
 
 .. note::
 
-    It also works with objects implementing the `Traversable`_ interface.
+    它还适用于实现了 `Traversable`_ 接口的对象。
 
-Arguments
+参数
 ---------
 
-* ``start``:         The start of the slice
-* ``length``:        The size of the slice
-* ``preserve_keys``: Whether to preserve key or not (when the input is an array)
+* ``start``:         切片的起始
+* ``length``:        切片的长度
+* ``preserve_keys``: 是否保留键（当输入是数组时）
 
 .. _`Traversable`: https://secure.php.net/manual/en/class.traversable.php
 .. _`array_slice`: https://secure.php.net/array_slice

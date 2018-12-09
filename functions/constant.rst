@@ -1,20 +1,20 @@
 ``constant``
 ============
 
-``constant`` returns the constant value for a given string:
+``constant`` 返回给定字符串的常量值：
 
 .. code-block:: jinja
 
     {{ some_date|date(constant('DATE_W3C')) }}
     {{ constant('Namespace\\Classname::CONSTANT_NAME') }}
 
-You can read constants from object instances as well:
+你也可以从对象实例中读取常量：
 
 .. code-block:: jinja
 
     {{ constant('RSS', date) }}
 
-Use the ``defined`` test to check if a constant is defined:
+可以使用 ``defined`` 测试来检查一个常量是否已定义：
 
 .. code-block:: jinja
 

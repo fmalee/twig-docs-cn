@@ -1,7 +1,7 @@
 ``template_from_string``
 ========================
 
-The ``template_from_string`` function loads a template from a string:
+``template_from_string`` 函数从一个字符串中加载模板：
 
 .. code-block:: jinja
 
@@ -10,20 +10,18 @@ The ``template_from_string`` function loads a template from a string:
 
 .. note::
 
-    The ``template_from_string`` function is not available by default. You
-    must add the ``Twig_Extension_StringLoader`` extension explicitly when
-    creating your Twig environment::
+    默认情况下，``template_from_string`` 函数不可用。
+    你必须在创建Twig环境时显式添加 ``Twig_Extension_StringLoader`` 扩展：
 
         $twig = new Twig_Environment(...);
         $twig->addExtension(new Twig_Extension_StringLoader());
 
 .. note::
 
-    Even if you will probably always use the ``template_from_string`` function
-    with the ``include`` function, you can use it with any tag or function that
-    takes a template as an argument (like the ``embed`` or ``extends`` tags).
+    即使你可能总是将 ``template_from_string`` 函数与 ``include``
+    函数一起使用，也可以将它与任何以模板作为参数的标签或函数（如 ``embed`` 或 ``extends`` 标签）一起使用。
 
-Arguments
+参数
 ---------
 
-* ``template``: The template
+* ``template``: 模板

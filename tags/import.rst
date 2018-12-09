@@ -1,13 +1,11 @@
 ``import``
 ==========
 
-Twig supports putting often used code into :doc:`macros<../tags/macro>`. These
-macros can go into different templates and get imported from there.
+Twig支持将常用代码放入 :doc:`宏<../tags/macro>` 中。这些宏可以进入不同的模板并从导入到那里。
 
-There are two ways to import templates. You can import the complete template
-into a variable or request specific macros from it.
+导入模板有两种方法。你可以将完整模板导入到一个变量或从中请求特定的宏。
 
-Imagine we have a helper module that renders forms (called ``forms.html``):
+想象一下，我们有一个用于渲染表单（名为 ``forms.html``）的辅助模块：
 
 .. code-block:: jinja
 
@@ -19,8 +17,7 @@ Imagine we have a helper module that renders forms (called ``forms.html``):
         <textarea name="{{ name }}" rows="{{ rows|default(10) }}" cols="{{ cols|default(40) }}">{{ value|e }}</textarea>
     {% endmacro %}
 
-The easiest and most flexible is importing the whole module into a variable.
-That way you can access the attributes:
+最简单、最灵活的是将整个模块导入到一个变量。这样你就可以访问这些属性：
 
 .. code-block:: jinja
 
@@ -34,8 +31,7 @@ That way you can access the attributes:
     </dl>
     <p>{{ forms.textarea('comment') }}</p>
 
-Alternatively you can import names from the template into the current
-namespace:
+或者，你可以将模板中的宏名称导入到当前名称空间：
 
 .. code-block:: jinja
 
@@ -51,7 +47,6 @@ namespace:
 
 .. tip::
 
-    To import macros from the current file, use the special ``_self`` variable
-    for the source.
+    要从当前文件导入宏，请使用特殊的 ``_self`` 变量作为来源。
 
 .. seealso:: :doc:`macro<../tags/macro>`, :doc:`from<../tags/from>`

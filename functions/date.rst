@@ -1,7 +1,7 @@
 ``date``
 ========
 
-Converts an argument to a date to allow date comparison:
+将一个参数转换为日期以允许进行日期比较：
 
 .. code-block:: jinja
 
@@ -9,9 +9,9 @@ Converts an argument to a date to allow date comparison:
         {# do something #}
     {% endif %}
 
-The argument must be in one of PHP’s supported `date and time formats`_.
+该参数必须采用PHP支持的 `日期和时间格式`_ 中的一个。
 
-You can pass a timezone as the second argument:
+你可以将时区作为第二个参数传递：
 
 .. code-block:: jinja
 
@@ -19,7 +19,7 @@ You can pass a timezone as the second argument:
         {# do something #}
     {% endif %}
 
-If no argument is passed, the function returns the current date:
+如果没有传递参数，则该函数返回当前日期：
 
 .. code-block:: jinja
 
@@ -29,18 +29,17 @@ If no argument is passed, the function returns the current date:
 
 .. note::
 
-    You can set the default timezone globally by calling ``setTimezone()`` on
-    the ``core`` extension instance:
+    你可以通过调用 ``core`` 扩展实例上的 ``setTimezone()`` 来全局的设置默认时区：
 
     .. code-block:: php
 
         $twig = new Twig_Environment($loader);
         $twig->getExtension('Twig_Extension_Core')->setTimezone('Europe/Paris');
 
-Arguments
+参数
 ---------
 
-* ``date``:     The date
-* ``timezone``: The timezone
+* ``date``:     日期
+* ``timezone``: 时区
 
-.. _`date and time formats`: https://secure.php.net/manual/en/datetime.formats.php
+.. _`日期和时间格式`: https://secure.php.net/manual/en/datetime.formats.php

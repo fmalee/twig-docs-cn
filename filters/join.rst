@@ -1,23 +1,21 @@
 ``join``
 ========
 
-The ``join`` filter returns a string which is the concatenation of the items
-of a sequence:
+``join`` 过滤器返回一个字符串，它是一个序列的项的级联：
 
 .. code-block:: jinja
 
     {{ [1, 2, 3]|join }}
     {# returns 123 #}
 
-The separator between elements is an empty string per default, but you can
-define it with the optional first parameter:
+元素之间的分隔符默认为一个空字符串，但你可以使用可选的第一个参数定义它：
 
 .. code-block:: jinja
 
     {{ [1, 2, 3]|join('|') }}
     {# outputs 1|2|3 #}
 
-Arguments
+参数
 ---------
 
-* ``glue``: The separator
+* ``glue``: 分隔符

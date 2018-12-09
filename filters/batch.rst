@@ -1,9 +1,8 @@
 ``batch``
 =========
 
-The ``batch`` filter "batches" items by returning a list of lists with the
-given number of items. A second parameter can be provided and used to fill in
-missing items:
+The ``batch`` filter "batches" items by returning a list of lists with the given number of items.
+可以使用第二个参数来填充缺失项：
 
 .. code-block:: jinja
 
@@ -19,7 +18,7 @@ missing items:
     {% endfor %}
     </table>
 
-The above example will be rendered as:
+以上示例将渲染为：
 
 .. code-block:: jinja
 
@@ -41,8 +40,8 @@ The above example will be rendered as:
         </tr>
     </table>
 
-Arguments
+参数
 ---------
 
-* ``size``: The size of the batch; fractional numbers will be rounded up
-* ``fill``: Used to fill in missing items
+* ``size``: 批量的大小; 小数将被四舍五入
+* ``fill``: 用于填充缺失的项

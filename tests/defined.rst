@@ -1,17 +1,17 @@
 ``defined``
 ===========
 
-``defined`` checks if a variable is defined in the current context. This is very
-useful if you use the ``strict_variables`` option:
+``defined`` 检查是否在当前上下文中定义了一个变量。
+如果你使用了 ``strict_variables`` 选项，这就非常有用：
 
 .. code-block:: jinja
 
-    {# defined works with variable names #}
+    {# 使用变量名称的 ``defined`` #}
     {% if foo is defined %}
         ...
     {% endif %}
 
-    {# and attributes on variables names #}
+    {# 和变量名称的属性 #}
     {% if foo.bar is defined %}
         ...
     {% endif %}
@@ -20,8 +20,7 @@ useful if you use the ``strict_variables`` option:
         ...
     {% endif %}
 
-When using the ``defined`` test on an expression that uses variables in some
-method calls, be sure that they are all defined first:
+在对某些方法调用中使用变量的表达式进行 ``defined`` 测试时，请确保首先定义它们：
 
 .. code-block:: jinja
 

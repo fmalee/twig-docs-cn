@@ -1,11 +1,10 @@
-Coding Standards
+代码规范
 ================
 
-When writing Twig templates, we recommend you to follow these official coding
-standards:
+在编写Twig模版时，我们推荐使用以下这些官方编码规范：
 
-* Put one (and only one) space after the start of a delimiter (``{{``, ``{%``,
-  and ``{#``) and before the end of a delimiter (``}}``, ``%}``, and ``#}``):
+* 在起始分隔符(``{{``、``{%`` 以及 ``{#``)的后面加一个空格，并在结尾分隔符(
+  ``}}``、``%}`` 以及 ``#}``)前面加一个空格：
 
   .. code-block:: jinja
 
@@ -13,8 +12,7 @@ standards:
     {# comment #}
     {% if foo %}{% endif %}
 
-  When using the whitespace control character, do not put any spaces between
-  it and the delimiter:
+  在使用空白控制字符时，不要在它和分隔符之间添加任何空格：
 
   .. code-block:: jinja
 
@@ -22,11 +20,9 @@ standards:
     {#- comment -#}
     {%- if foo -%}{%- endif -%}
 
-* Put one (and only one) space before and after the following operators:
-  comparison operators (``==``, ``!=``, ``<``, ``>``, ``>=``, ``<=``), math
-  operators (``+``, ``-``, ``/``, ``*``, ``%``, ``//``, ``**``), logic
-  operators (``not``, ``and``, ``or``), ``~``, ``is``, ``in``, and the ternary
-  operator (``?:``):
+* 在以下操作符前后添加一个空格：比较运算符 (``==``, ``!=``, ``<``, ``>``, ``>=``, ``<=``)、
+  数学运算符 (``+``, ``-``, ``/``, ``*``, ``%``, ``//``, ``**``)、
+  逻辑运算符 (``not``, ``and``, ``or``)、``~``、``is``、``in`` 以及三元运算符(``?:``):
 
   .. code-block:: jinja
 
@@ -34,30 +30,27 @@ standards:
      {{ foo ~ bar }}
      {{ true ? true : false }}
 
-* Put one (and only one) space after the ``:`` sign in hashes and ``,`` in
-  arrays and hashes:
+* 在散列中的 ``:`` 标志后添加一个空格，数组和散列的 ``,`` 后也添加一个空格：
 
   .. code-block:: jinja
 
      {{ [1, 2, 3] }}
      {{ {'foo': 'bar'} }}
 
-* Do not put any spaces after an opening parenthesis and before a closing
-  parenthesis in expressions:
+* 不要在表达式的圆括号前后添加空格：
 
   .. code-block:: jinja
 
     {{ 1 + (2 * 3) }}
 
-* Do not put any spaces before and after string delimiters:
+* 不要在字符串分隔符前后添加空格：
 
   .. code-block:: jinja
 
     {{ 'foo' }}
     {{ "foo" }}
 
-* Do not put any spaces before and after the following operators: ``|``,
-  ``.``, ``..``, ``[]``:
+* 不要在以下操作符前后添加空格：``|``、``.``、``..``、``[]``
 
   .. code-block:: jinja
 
@@ -66,31 +59,28 @@ standards:
     {{ user[name] }}
     {% for i in 1..12 %}{% endfor %}
 
-* Do not put any spaces before and after the parenthesis used for filter and
-  function calls:
+* 不要在过滤器和函数调用中的圆括号前后添加空格：
 
   .. code-block:: jinja
 
      {{ foo|default('foo') }}
      {{ range(1..10) }}
 
-* Do not put any spaces before and after the opening and the closing of arrays
-  and hashes:
+* 不要在数组和散列的首尾添加空格：
 
   .. code-block:: jinja
 
      {{ [1, 2, 3] }}
      {{ {'foo': 'bar'} }}
 
-* Use lower cased and underscored variable names:
+* 使用小写字母和下划线形式的变量名称：
 
   .. code-block:: jinja
 
      {% set foo = 'foo' %}
      {% set foo_bar = 'foo' %}
 
-* Indent your code inside tags (use the same indentation as the one used for
-  the target language of the rendered template):
+* 在标签内缩进代码（使用与模板渲染的目标语言相同的缩进方式）
 
   .. code-block:: jinja
 

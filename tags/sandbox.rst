@@ -1,8 +1,7 @@
 ``sandbox``
 ===========
 
-The ``sandbox`` tag can be used to enable the sandboxing mode for an included
-template, when sandboxing is not enabled globally for the Twig environment:
+当没有为Twig环境全局启用沙盒时， ``sandbox`` 标签可用于为引入的模板启用沙盒模式：
 
 .. code-block:: jinja
 
@@ -12,14 +11,12 @@ template, when sandboxing is not enabled globally for the Twig environment:
 
 .. warning::
 
-    The ``sandbox`` tag is only available when the sandbox extension is
-    enabled (see the :doc:`Twig for Developers<../api>` chapter).
+    ``sandbox`` 标签仅在启用沙盒扩展时可用（请参阅 :doc:`面向开发者<../api>` 文档）。
 
 .. note::
 
-    The ``sandbox`` tag can only be used to sandbox an include tag and it
-    cannot be used to sandbox a section of a template. The following example
-    won't work:
+    ``sandbox`` 标签只能用于沙盒一个 ``include`` 标签，并且不能用于沙盒模板的一部分。
+    以下示例不起作用：
 
     .. code-block:: jinja
 

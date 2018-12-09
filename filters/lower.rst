@@ -1,7 +1,7 @@
 ``lower``
 =========
 
-The ``lower`` filter converts a value to lowercase:
+``lower`` 过滤器将一个值转换为小写：
 
 .. code-block:: jinja
 

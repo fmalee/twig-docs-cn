@@ -1,11 +1,9 @@
 ``macro``
 =========
 
-Macros are comparable with functions in regular programming languages. They
-are useful to put often used HTML idioms into reusable elements to not repeat
-yourself.
+宏与常规编程语言中的函数相当。它可用于将常用的HTML习语放入可重用的元素中以便不重复自己。
 
-Here is a small example of a macro that renders a form element:
+以下是渲染一个表单元素的宏的一个小示例：
 
 .. code-block:: jinja
 
@@ -13,48 +11,40 @@ Here is a small example of a macro that renders a form element:
         <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" size="{{ size|default(20) }}" />
     {% endmacro %}
 
-Macros differ from native PHP functions in a few ways:
+宏在几个方面与原生PHP函数不同：
 
-* Default argument values are defined by using the ``default`` filter in the
-  macro body;
+* 默认参数值是通过使用宏内容中的 ``default`` 过滤器定义的;
 
-* Arguments of a macro are always optional.
+* 一个宏的参数始终是可选的。
 
-* If extra positional arguments are passed to a macro, they end up in the
-  special ``varargs`` variable as a list of values.
+* 如果将额外的位置参数传递给宏，它们最终会在特殊的 ``varargs`` 变量中作为一个值列表。
 
-But as with PHP functions, macros don't have access to the current template
-variables.
+但与PHP函数一样，宏无法访问当前模板的变量。
 
 .. tip::
 
-    You can pass the whole context as an argument by using the special
-    ``_context`` variable.
+    你可以使用特殊的 ``_context`` 变量将整个上下文作为参数传递。
 
-Import
+导入
 ------
 
-Macros can be defined in any template, and need to be "imported" before being
-used (see the documentation for the :doc:`import<../tags/import>` tag for more
-information):
+宏可以在任何模板中定义，并且在使用之前需要“导入”（有关更多信息，请参阅
+:doc:`import<../tags/import>` 标签的文档）：
 
 .. code-block:: jinja
 
     {% import "forms.html" as forms %}
 
-The above ``import`` call imports the "forms.html" file (which can contain only
-macros, or a template and some macros), and import the functions as items of
-the ``forms`` variable.
+上面的 ``import`` 调用导入“forms.html”文件（它只能包含宏，或一个模板与一些宏），并将其函数导入为 ``forms`` 变量的项。
 
-The macro can then be called at will:
+然后可以随意调用该宏：
 
 .. code-block:: jinja
 
     <p>{{ forms.input('username') }}</p>
     <p>{{ forms.input('password', null, 'password') }}</p>
 
-If macros are defined and used in the same template, you can use the
-special ``_self`` variable to import them:
+如果在同一模板中定义并使用宏，则可以使用特殊的 ``_self`` 变量来导入它们：
 
 .. code-block:: jinja
 
@@ -62,8 +52,7 @@ special ``_self`` variable to import them:
 
     <p>{{ forms.input('username') }}</p>
 
-When you want to use a macro in another macro from the same file, you need to
-import it locally:
+如果要在同一文件中的另一个宏中使用宏，则需要本地化的导入它：
 
 .. code-block:: jinja
 
@@ -79,11 +68,10 @@ import it locally:
         </div>
     {% endmacro %}
 
-Named Macro End-Tags
+命名宏的结束标签
 --------------------
 
-Twig allows you to put the name of the macro after the end tag for better
-readability:
+Twig允许你在结束标签之后放置宏的名称以提高可读性：
 
 .. code-block:: jinja
 
@@ -91,6 +79,6 @@ readability:
         ...
     {% endmacro input %}
 
-Of course, the name after the ``endmacro`` word must match the macro name.
+当然，``endmacro`` 单词后面的名称必须与宏名称匹配。
 
 .. seealso:: :doc:`from<../tags/from>`, :doc:`import<../tags/import>`

@@ -1,16 +1,16 @@
 ``iterable``
 ============
 
-``iterable`` checks if a variable is an array or a traversable object:
+``iterable`` 检查变量是数组还是可遍历对象：
 
 .. code-block:: jinja
 
-    {# evaluates to true if the foo variable is iterable #}
+    {# 如果foo变量是可迭代的，则求值为true #}
     {% if users is iterable %}
         {% for user in users %}
             Hello {{ user }}!
         {% endfor %}
     {% else %}
-        {# users is probably a string #}
+        {# users变量可能是一个字符串 #}
         Hello {{ users }}!
     {% endif %}

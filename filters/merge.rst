@@ -1,7 +1,7 @@
 ``merge``
 =========
 
-The ``merge`` filter merges an array with another array:
+``merge`` 过滤器可以合并两个数组：
 
 .. code-block:: jinja
 
@@ -9,11 +9,11 @@ The ``merge`` filter merges an array with another array:
 
     {% set values = values|merge(['apple', 'orange']) %}
 
-    {# values now contains [1, 2, 'apple', 'orange'] #}
+    {# values 现在包含： [1, 2, 'apple', 'orange'] #}
 
-New values are added at the end of the existing ones.
+现在新值将会添加到现有值得末尾。
 
-The ``merge`` filter also works on hashes:
+``merge`` 过滤器也适用于一个散列：
 
 .. code-block:: jinja
 
@@ -21,16 +21,13 @@ The ``merge`` filter also works on hashes:
 
     {% set items = items|merge({ 'peugeot': 'car', 'renault': 'car' }) %}
 
-    {# items now contains { 'apple': 'fruit', 'orange': 'fruit', 'peugeot': 'car', 'renault': 'car' } #}
+    {# items 现在包含： { 'apple': 'fruit', 'orange': 'fruit', 'peugeot': 'car', 'renault': 'car' } #}
 
-For hashes, the merging process occurs on the keys: if the key does not
-already exist, it is added but if the key already exists, its value is
-overridden.
+对于散列，合并过程发生在键上：如果对应的键尚不存在，则添加它，但如果该键已存在，则重写其值。
 
 .. tip::
 
-    If you want to ensure that some values are defined in an array (by given
-    default values), reverse the two elements in the call:
+    如果要确保保留住在数组中定义某些值（通过给定的默认值），请反转调用中的两个元素：
 
     .. code-block:: jinja
 
@@ -39,10 +36,9 @@ overridden.
         {% set items = { 'apple': 'unknown' }|merge(items) %}
 
         {# items now contains { 'apple': 'fruit', 'orange': 'fruit' } #}
-        
+
 .. note::
 
-    Internally, Twig uses the PHP `array_merge`_ function. It supports
-    Traversable objects by transforming those to arrays.
+    在内部，Twig使用PHP的 `array_merge`_ 函数。它通过将Traversable转换为数组来支持它们。
 
 .. _`array_merge`: https://secure.php.net/array_merge

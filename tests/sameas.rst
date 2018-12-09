@@ -1,8 +1,7 @@
 ``same as``
 ===========
 
-``same as`` checks if a variable is the same as another variable.
-This is the equivalent to ``===`` in PHP:
+``same as`` 检查变量是否与另一个变量相同。这相当于PHP的 ``===``：
 
 .. code-block:: jinja
 

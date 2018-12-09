@@ -1,8 +1,7 @@
 ``keys``
 ========
 
-The ``keys`` filter returns the keys of an array. It is useful when you want to
-iterate over the keys of an array:
+``keys`` 过滤器返回一个数组的键。当你想迭代数组的键时，它很有用：
 
 .. code-block:: jinja
 

@@ -1,8 +1,7 @@
 ``for``
 =======
 
-Loop over each item in a sequence. For example, to display a list of users
-provided in a variable called ``users``:
+循环遍历一个序列中的每个项。例如，要显示一个名为 ``users`` 的变量提供的用户列表：
 
 .. code-block:: jinja
 
@@ -15,11 +14,9 @@ provided in a variable called ``users``:
 
 .. note::
 
-    A sequence can be either an array or an object implementing the
-    ``Traversable`` interface.
+    一个序列可以是一个数组或一个实现了 ``Traversable`` 接口的对象。
 
-If you do need to iterate over a sequence of numbers, you can use the ``..``
-operator:
+如果你确实需要迭代一系列数字，则可以使用 ``..`` 运算符：
 
 .. code-block:: jinja
 
@@ -27,9 +24,9 @@ operator:
         * {{ i }}
     {% endfor %}
 
-The above snippet of code would print all numbers from 0 to 10.
+上面的代码片段将打印0到10之间的所有数字。
 
-It can be also useful with letters:
+它也适用于字母：
 
 .. code-block:: jinja
 
@@ -37,7 +34,7 @@ It can be also useful with letters:
         * {{ letter }}
     {% endfor %}
 
-The ``..`` operator can take any expression at both sides:
+``..`` 运算符的两边都可以采取任何表达：
 
 .. code-block:: jinja
 
@@ -47,25 +44,24 @@ The ``..`` operator can take any expression at both sides:
 
 .. tip:
 
-    If you need a step different from 1, you can use the ``range`` function
-    instead.
+    如果需要一个从1开始的不同步进，则可以使用 ``range`` 函数。
 
-The `loop` variable
+`loop` 变量
 -------------------
 
-Inside of a ``for`` loop block you can access some special variables:
+在 ``for`` 循环块内部，你可以访问一些特殊变量：
 
 ===================== =============================================================
-Variable              Description
+变量                   说明
 ===================== =============================================================
-``loop.index``        The current iteration of the loop. (1 indexed)
-``loop.index0``       The current iteration of the loop. (0 indexed)
-``loop.revindex``     The number of iterations from the end of the loop (1 indexed)
-``loop.revindex0``    The number of iterations from the end of the loop (0 indexed)
-``loop.first``        True if first iteration
-``loop.last``         True if last iteration
-``loop.length``       The number of items in the sequence
-``loop.parent``       The parent context
+``loop.index``        循环的当前迭代。（1索引）
+``loop.index0``       循环的当前迭代。（0索引）
+``loop.revindex``     循环结束时的迭代次数（1个索引）
+``loop.revindex0``    循环结束时的迭代次数（0索引）
+``loop.first``        如果第一次迭代，则为True
+``loop.last``         如果是最后一次迭代，则为True
+``loop.length``       序列中的项的数量
+``loop.parent``       父上下文
 ===================== =============================================================
 
 .. code-block:: jinja
@@ -76,17 +72,15 @@ Variable              Description
 
 .. note::
 
-    The ``loop.length``, ``loop.revindex``, ``loop.revindex0``, and
-    ``loop.last`` variables are only available for PHP arrays, or objects that
-    implement the ``Countable`` interface. They are also not available when
-    looping with a condition.
+    ``loop.length``、``loop.revindex``、``loop.revindex0`` 以及 ``loop.last``
+    变量仅适用于PHP数组，或实现了 ``Countable`` 接口的对象。
+    在使用一个条件进行循环时它们也不可用。
 
-Adding a condition
+添加条件
 ------------------
 
-Unlike in PHP, it's not possible to ``break`` or ``continue`` in a loop. You
-can however filter the sequence during iteration which allows you to skip
-items. The following example skips all the users which are not active:
+与PHP不同，它不可能在循环中 ``break`` 或 ``continue``。
+但是，你可以在迭代期间过滤该序列，以便跳过指定项。以下示例将跳过所有未激活的用户：
 
 .. code-block:: jinja
 
@@ -96,23 +90,18 @@ items. The following example skips all the users which are not active:
         {% endfor %}
     </ul>
 
-The advantage is that the special loop variable will count correctly thus not
-counting the users not iterated over. Keep in mind that properties like
-``loop.last`` will not be defined when using loop conditions.
+优点是指定的循环变量将正确计数，因此不计算未迭代的用户。
+请记住，使用循环条件时不会定义类似 ``loop.last`` 的属性。
 
 .. note::
 
-    Using the ``loop`` variable within the condition is not recommended as it
-    will probably not be doing what you expect it to. For instance, adding a
-    condition like ``loop.index > 4`` won't work as the index is only
-    incremented when the condition is true (so the condition will never
-    match).
+    建议不要在条件中使用 ``loop`` 变量，因为它可能不会按你的预期执行。
+    例如，类似 ``loop.index > 4`` 的一个条件并不会生效，因为该索引只在该条件为真时递增（因此该条件永远不会匹配）。
 
-The `else` Clause
+`else` 条件
 -----------------
 
-If no iteration took place because the sequence was empty, you can render a
-replacement block by using ``else``:
+如果由于序列为空而没有发生迭代，则可以使用 ``else`` 方法来渲染一个替换区块：
 
 .. code-block:: jinja
 
@@ -124,11 +113,10 @@ replacement block by using ``else``:
         {% endfor %}
     </ul>
 
-Iterating over Keys
+迭代键
 -------------------
 
-By default, a loop iterates over the values of the sequence. You can iterate
-on keys by using the ``keys`` filter:
+默认情况下，一个循环会遍历序列的值。但你可以使用 ``keys`` 过滤器来迭代键：
 
 .. code-block:: jinja
 
@@ -139,10 +127,10 @@ on keys by using the ``keys`` filter:
         {% endfor %}
     </ul>
 
-Iterating over Keys and Values
+迭代键和值
 ------------------------------
 
-You can also access both keys and values:
+你还可以同时访问键和值：
 
 .. code-block:: jinja
 
@@ -153,11 +141,10 @@ You can also access both keys and values:
         {% endfor %}
     </ul>
 
-Iterating over a Subset
+迭代子集
 -----------------------
 
-You might want to iterate over a subset of values. This can be achieved using
-the :doc:`slice <../filters/slice>` filter:
+你可能希望迭代值的一个子集。这可以通过使用 :doc:`slice <../filters/slice>` 过滤器来实现：
 
 .. code-block:: jinja
 

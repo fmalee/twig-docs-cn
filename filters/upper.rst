@@ -1,7 +1,7 @@
 ``upper``
 =========
 
-The ``upper`` filter converts a value to uppercase:
+``upper`` 过滤器将一个值转换为大写：
 
 .. code-block:: jinja
 

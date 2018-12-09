@@ -1,19 +1,18 @@
 ``raw``
 =======
 
-The ``raw`` filter marks the value as being "safe", which means that in an
-environment with automatic escaping enabled this variable will not be escaped
-if ``raw`` is the last filter applied to it:
+``raw`` 过滤器标记一个值作为“安全”，这意味着在启用自动转义的环境中如果还有变量未转义，则
+``raw`` 是适用于它的最后一个过滤器：
 
 .. code-block:: jinja
 
     {% autoescape %}
-        {{ var|raw }} {# var won't be escaped #}
+        {{ var|raw }} {# var不会被转义 #}
     {% endautoescape %}
 
 .. note::
 
-    Be careful when using the ``raw`` filter inside expressions:
+    在表达式中使用 ``raw`` 过滤器时要小心：
 
     .. code-block:: jinja
 
@@ -28,9 +27,7 @@ if ``raw`` is the last filter applied to it:
             {{ (false ? hola : hello)|raw }}
         {% endautoescape %}
 
-    The first ternary statement is not escaped: ``hello`` is marked as being
-    safe and Twig does not escape static values (see
-    :doc:`escape<../tags/autoescape>`). In the second ternary statement, even
-    if ``hello`` is marked as safe, ``hola`` remains unsafe and so is the whole
-    expression. The third ternary statement is marked as safe and the result is
-    not escaped.
+    第一个三元语句未被转义：``hello`` 被标记为安全，并且Twig不会转义静态值（请参阅
+    :doc:`escape<../tags/autoescape>`）。
+    在第二个三元语句中，即使 ``hello`` 被标记为安全，但 ``hola`` 仍然是不安全的，整个表达也是如此。
+    第三个三元语句被标记为安全，所以结果不会被转义。

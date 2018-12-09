@@ -1,41 +1,37 @@
 ``include``
 ===========
 
-The ``include`` function returns the rendered content of a template:
+``include`` 函数返回一个模板的已渲染内容：
 
 .. code-block:: jinja
 
     {{ include('template.html') }}
     {{ include(some_var) }}
 
-Included templates have access to the variables of the active context.
+引入的模板可以访问活动(active)上下文的变量。
 
-If you are using the filesystem loader, the templates are looked for in the
-paths defined by it.
+如果你使用的是文件系统加载器，则会在其定义的路径中查找模板。
 
-The context is passed by default to the template but you can also pass
-additional variables:
+默认情况下，上下文会传递给模板，但你也可以传递其他变量：
 
 .. code-block:: jinja
 
-    {# template.html will have access to the variables from the current context and the additional ones provided #}
+    {# template.html可以访问当前上下文中的变量以及提供的额外变量 #}
     {{ include('template.html', {foo: 'bar'}) }}
 
-You can disable access to the context by setting ``with_context`` to
-``false``:
+你可以通过设置 ``with_context`` 为 ``false`` 来禁用对上下文的访问：
 
 .. code-block:: jinja
 
-    {# only the foo variable will be accessible #}
+    {# 只有foo变量才可以被访问 #}
     {{ include('template.html', {foo: 'bar'}, with_context = false) }}
 
 .. code-block:: jinja
 
-    {# no variables will be accessible #}
+    {# 没有变量可以被访问 #}
     {{ include('template.html', with_context = false) }}
 
-And if the expression evaluates to a ``Twig_Template`` or a
-``Twig_TemplateWrapper`` instance, Twig will use it directly::
+如果表达式求值为一个 ``Twig_Template`` 或 ``Twig_TemplateWrapper`` 实例，Twig将直接使用它::
 
     // {{ include(template) }}
 
@@ -43,35 +39,31 @@ And if the expression evaluates to a ``Twig_Template`` or a
 
     $twig->display('template.twig', array('template' => $template));
 
-When you set the ``ignore_missing`` flag, Twig will return an empty string if
-the template does not exist:
+设置了 ``ignore_missing`` 标志后，如果对应模板不存在，Twig将返回一个空字符串：
 
 .. code-block:: jinja
 
     {{ include('sidebar.html', ignore_missing = true) }}
 
-You can also provide a list of templates that are checked for existence before
-inclusion. The first template that exists will be rendered:
+你还可以提供一个在引用之前就检查了存在性的模板列表。将渲染未缺失的第一个模板：
 
 .. code-block:: jinja
 
     {{ include(['page_detailed.html', 'page.html']) }}
 
-If ``ignore_missing`` is set, it will fall back to rendering nothing if none
-of the templates exist, otherwise it will throw an exception.
+如果设置了 ``ignore_missing``，但该模板不存在，它将回退到什么都不渲染，否则它将抛出异常。
 
-When including a template created by an end user, you should consider
-sandboxing it:
+引入一个最终用户创建的模板时，你应该考虑将其沙箱化：
 
 .. code-block:: jinja
 
     {{ include('page.html', sandboxed = true) }}
 
-Arguments
+参数
 ---------
 
-* ``template``:       The template to render
-* ``variables``:      The variables to pass to the template
-* ``with_context``:   Whether to pass the current context variables or not
-* ``ignore_missing``: Whether to ignore missing templates or not
-* ``sandboxed``:      Whether to sandbox the template or not
+* ``template``:       要渲染的模板
+* ``variables``:      传递给模板的变量
+* ``with_context``:   是否传递当前上下文变量
+* ``ignore_missing``: 是否忽略缺失的模板
+* ``sandboxed``:      是否沙箱化该模板

@@ -1,7 +1,7 @@
 ``null``
 ========
 
-``null`` returns ``true`` if the variable is ``null``:
+如果变量是 ``null``，则 ``null`` 返回 ``true``：
 
 .. code-block:: jinja
 
@@ -9,4 +9,4 @@
 
 .. note::
 
-    ``none`` is an alias for ``null``.
+    ``none`` 是 ``null`` 的一个别名。

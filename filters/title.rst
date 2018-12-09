@@ -1,8 +1,7 @@
 ``title``
 =========
 
-The ``title`` filter returns a titlecased version of the value. Words will
-start with uppercase letters, all remaining characters are lowercase:
+``title`` 过滤器返回一个值的titlecased版本。单词将以大写字母开头，所有剩余字符均为小写：
 
 .. code-block:: jinja
 

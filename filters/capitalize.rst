@@ -1,11 +1,10 @@
 ``capitalize``
 ==============
 
-The ``capitalize`` filter capitalizes a value. The first character will be
-uppercase, all others lowercase:
+``capitalize`` 过滤器大写一个值。第一个字符是大写的，所有其他字符都是小写的：
 
 .. code-block:: jinja
 
     {{ 'my first car'|capitalize }}
 
-    {# outputs 'My first car' #}
+    {# 输出 'My first car' #}

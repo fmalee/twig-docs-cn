@@ -1,9 +1,8 @@
 ``verbatim``
 ============
 
-The ``verbatim`` tag marks sections as being raw text that should not be
-parsed. For example to put Twig syntax as example into a template you can use
-this snippet:
+``verbatim`` 标签用于标记不应该被解析的原始文本。
+例如，要将Twig语法作为示例放入一个模板，你可以使用此代码片段：
 
 .. code-block:: jinja
 

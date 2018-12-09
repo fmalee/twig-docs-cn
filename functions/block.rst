@@ -1,8 +1,7 @@
 ``block``
 =========
 
-When a template uses inheritance and if you want to print a block multiple
-times, use the ``block`` function:
+当模板使用继承时，如果要多次打印一个区块，请使用 ``block`` 函数：
 
 .. code-block:: jinja
 
@@ -12,15 +11,13 @@ times, use the ``block`` function:
 
     {% block body %}{% endblock %}
 
-The ``block`` function can also be used to display one block from another
-template:
+``block`` 函数还可用于显示另一个模板中的个区块：
 
 .. code-block:: jinja
 
     {{ block("title", "common_blocks.twig") }}
 
-Use the ``defined`` test to check if a block exists in the context of the
-current template:
+可以使用 ``defined`` 测试来检查当前模板的上下文中是否存在一个区块：
 
 .. code-block:: jinja
 

@@ -1,20 +1,19 @@
 ``date_modify``
 ===============
 
-The ``date_modify`` filter modifies a date with a given modifier string:
+``date_modify`` 过滤器使用一个修改字符串来修改一个日期：
 
 .. code-block:: jinja
 
     {{ post.published_at|date_modify("+1 day")|date("m/d/Y") }}
 
-The ``date_modify`` filter accepts strings (it must be in a format supported
-by the `strtotime`_ function) or `DateTime`_ instances. You can easily combine
-it with the :doc:`date<date>` filter for formatting.
+``date_modify`` 过滤器接受字符串（它必须是 `strtotime`_ 函数所支持的格式）或 `DateTime`_ 实例。
+你可以轻松地将其与 :doc:`date<date>` 过滤器组合以进行格式化。
 
-Arguments
+参数
 ---------
 
-* ``modifier``: The modifier
+* ``modifier``: 修饰符
 
 .. _`strtotime`: https://secure.php.net/strtotime
 .. _`DateTime`:  https://secure.php.net/DateTime

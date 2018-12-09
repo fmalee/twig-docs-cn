@@ -1,8 +1,7 @@
 ``do``
 ======
 
-The ``do`` tag works exactly like the regular variable expression (``{{ ...
-}}``) just that it doesn't print anything:
+``do`` 标签的作用完全类似于常规的变量表达式（``{{ ... }}``），只是它不打印任何东西：
 
 .. code-block:: jinja
 

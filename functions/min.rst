@@ -1,17 +1,16 @@
 ``min``
 =======
 
-``min`` returns the lowest value of a sequence or a set of values:
+``min`` 返回一个序列或一组值中的最小值：
 
 .. code-block:: jinja
 
     {{ min(1, 3, 2) }}
     {{ min([1, 3, 2]) }}
 
-When called with a mapping, min ignores keys and only compares values:
+当调用一个映射时，``min`` 将忽略键并仅比较值：
 
 .. code-block:: jinja
 
     {{ min({2: "e", 3: "a", 1: "b", 5: "d", 4: "c"}) }}
-    {# returns "a" #}
-
+    {# 返回 "a" #}
