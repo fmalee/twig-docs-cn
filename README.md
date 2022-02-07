@@ -18,7 +18,6 @@
 
 ## 未译章节
 
-- 修改了 `index.rst`，以适应新主题
 - `advanced.rst`
 - `recipesrst`
 - `tags/embed.rst`
@@ -56,17 +55,36 @@
 - `Lexer`：词法分析器
 - `Policy`：策略
 
-## 生成主题
+## 构建文档
 
-临时使用了Doctrine ORM文档的主题，但未修改主题本身。
+原本临时使用了Doctrine ORM文档的主题，但未修改主题本身。因为官方在**2020/11/5**的`c9328ad613a171dd3c084ad9ab8aadcb853009ea` 提交上才引入了：DOCtor-RST config + Sphinx build + GithubActions。
 
-### 如何生成
+### Docker
 
-官方在2020/11/5的`c9328ad613a171dd3c084ad9ab8aadcb853009ea` 提交上才引入了：DOCtor-RST config + Sphinx build + GithubActions
+```shell
+# 进入文档目录
+$ cd twig-docs-cn
+# 构建Docker镜像
+# 因为有不少依赖，所以不能使用Sphinx官方的镜像
+$ docker build -t sphinx:alpine .
+# 运行新生成的Docker镜像，并生成HTML文档
+$ docker run --rm -v $(pwd):/docs sphinx:alpine make html
+```
 
+> HTML文档在 `twig-docs-cn/__build/html` 目录
 
+### 本机环境
 
-> 官方没有提供生成说明，需要自己配置。
+```shell
+# 进入文档目录
+$ cd twig-docs-cn
+# 安装相关依赖
+$ python3 -m pip install --no-cache-dir -r .requirements.txt
+# 生成HTML文档
+$ make html
+```
+
+> 额外需要安装Git，同时保证能连同Github，有一个依赖需要克隆Github项目。
 
 ## 资源
 
