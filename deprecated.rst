@@ -75,7 +75,7 @@ PSR-0
 
 * 根据输入，``Twig\Environment::resolveTemplate()`` 可以返回一个
   ``Twig\Template`` 或 ``Twig\TemplateWrapper`` 实例。
-  在Twig 3.0中，此方法将 **始终** 返回一个 ``Twig\TemplateWrapper``实例。
+  在Twig 3.0中，此方法将 **始终** 返回一个 ``Twig\TemplateWrapper`` 实例。
   如果希望向前兼容，则只能依赖此类的方法。
 
 接口

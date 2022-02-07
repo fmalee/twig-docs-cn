@@ -27,7 +27,7 @@
 
 支持的值： ``none``、 ``short``、 ``medium``、 ``long`` 以及 ``full``。
 
-为了获得更大的灵活性，您甚至可以定义自己的模式（有关支持的模式，请参阅 `ICU用户指南<https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax>`_）。
+为了获得更大的灵活性，您甚至可以定义自己的模式（有关支持的模式，请参阅 `ICU用户指南 <https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax>`_）。
 
 .. code-block:: twig
 
