@@ -3,7 +3,7 @@
 
 无论是否启用自动转义，你都可以使用 ``autoescape`` 标签来标记要转义的模板的一个切片：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% autoescape %}
         此区块中的所有内容都将自动转义
@@ -27,7 +27,7 @@
 启用自动转义功能后，除标记为安全的值外，默认情况下都会转义所有内容。
 可以使用 :doc:`raw<../filters/raw>` 过滤器在模板中标记这些：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% autoescape %}
         {{ safe_value|raw }}
@@ -44,7 +44,7 @@
 
     Twig不会转义静态表达式：
 
-    .. code-block:: jinja
+    .. code-block:: html+twig
 
         {% set hello = "<strong>Hello</strong>" %}
         {{ hello }}

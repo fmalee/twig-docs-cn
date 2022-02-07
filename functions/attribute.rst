@@ -3,7 +3,7 @@
 
 ``attribute`` 函数可用于访问变量的一个“动态”属性：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ attribute(object, method) }}
     {{ attribute(object, method, arguments) }}
@@ -11,9 +11,9 @@
 
 此外，可以使用 ``defined`` 测试来检查是否存在一个动态属性：
 
-.. code-block:: jinja
+.. code-block:: twig
 
-    {{ attribute(object, method) is defined ? 'Method exists' : 'Method does not exist' }}
+    {{ attribute(object, method) is defined ? '方法存在' : '方法不存在' }}
 
 .. note::
 

@@ -3,8 +3,8 @@
 
 ``upper`` 过滤器将一个值转换为大写：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ 'welcome'|upper }}
 
-    {# outputs 'WELCOME' #}
+    {# 输出：'WELCOME' #}

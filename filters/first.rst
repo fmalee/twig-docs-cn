@@ -3,7 +3,7 @@
 
 ``first`` 过滤器返回一个序列、映射或字符串的第一个“元素”：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ [1, 2, 3, 4]|first }}
     {# 输出： 1 #}
@@ -18,4 +18,4 @@
 
     它还适用于实现了 `Traversable`_ 接口的对象。
 
-.. _`Traversable`: https://secure.php.net/manual/en/class.traversable.php
+.. _`Traversable`: https://www.php.net/manual/en/class.traversable.php

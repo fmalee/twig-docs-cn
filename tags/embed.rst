@@ -4,7 +4,7 @@
 ``embed`` 标签是 :doc:`include<include>` 与 :doc:`extends<extends>`
 行为的组合。它允许你引入另一个模板的内容，就像 ``include`` 做的一样。
 但它还允许你重写引入的模板中定义的任何区块，例如继承一个模板时。
-The ``embed`` tag combines the behaviour of :doc:`include<include>` and
+The ``embed`` tag combines the behavior of :doc:`include<include>` and
 :doc:`extends<extends>`.
 It allows you to include another template's contents, just like ``include``
 does. But it also allows you to override any block defined inside the
@@ -13,7 +13,7 @@ included template, like when extending a template.
 可以将一个嵌入式模板视为一个“微型布局骨架”。
 Think of an embedded template as a "micro layout skeleton".
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% embed "teasers_skeleton.twig" %}
         {# These blocks are defined in "teasers_skeleton.twig" #}
@@ -130,7 +130,7 @@ as necessary:
 页面模板foo.twig：
 Page template ``foo.twig``:
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% extends "layout_skeleton.twig" %}
 
@@ -149,7 +149,7 @@ Page template ``foo.twig``:
 这是代码vertical_boxes_skeleton.twig：
 And here is the code for ``vertical_boxes_skeleton.twig``:
 
-.. code-block:: html+jinja
+.. code-block:: html+twig
 
     <div class="top_box">
         {% block top %}
@@ -170,7 +170,7 @@ out the HTML markup for the boxes.
 该embed标签带有精确相同的参数include标签：
 The ``embed`` tag takes the exact same arguments as the ``include`` tag:
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% embed "base" with {'foo': 'bar'} %}
         ...
@@ -193,4 +193,6 @@ The ``embed`` tag takes the exact same arguments as the ``include`` tag:
     ``autoescape`` tag.
     由于嵌入式模板没有“名称”，因此如果更改上下文（例如，如果将CSS / JavaScript模板嵌入到HTML模板中），则基于模板名称的自动转义策略将无法按预期工作。在这种情况下，使用autoescape标记显式设置默认的自动转义策略 。
 
-.. seealso:: :doc:`include<../tags/include>`
+.. seealso::
+
+    :doc:`include<../tags/include>`

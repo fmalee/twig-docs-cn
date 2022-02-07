@@ -5,20 +5,20 @@
 
 以下是如何把 ``bar`` 赋值给 ``foo`` 变量：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set foo = 'bar' %}
 
 在调用 ``set`` 后，``foo`` 变量就像模板中的任何其他变量一个可供使用：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {# 显示 bar #}
     {{ foo }}
 
 指定的值可以是任何有效的 :ref:`Twig表达式 <twig-expressions>`：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set foo = [1, 2] %}
     {% set foo = {'foo': 'bar'} %}
@@ -26,7 +26,7 @@
 
 可以在一个区块中同时赋值多个变量：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set foo, bar = 'foo', 'bar' %}
 
@@ -37,7 +37,7 @@
 
 ``set`` 标签也可以用于“捕获”文本块：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% set foo %}
         <div id="pagination">
@@ -53,7 +53,7 @@
 
     请注意，循环在Twig中有作用域; 因此，在循环外部无法访问一个在 ``for`` 循环内声明的变量：
 
-    .. code-block:: jinja
+    .. code-block:: twig
 
         {% for item in list %}
             {% set foo = item %}
@@ -63,7 +63,7 @@
 
     如果要访问变量，只需在循环之前声明它：
 
-    .. code-block:: jinja
+    .. code-block:: twig
 
         {% set foo = "" %}
         {% for item in list %}

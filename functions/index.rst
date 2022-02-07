@@ -10,6 +10,7 @@
     cycle
     date
     dump
+    html_classes
     include
     max
     min
@@ -17,4 +18,5 @@
     random
     range
     source
+    country_timezones
     template_from_string

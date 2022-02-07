@@ -1,12 +1,12 @@
 ``batch``
 =========
 
-The ``batch`` filter "batches" items by returning a list of lists with the given number of items.
+``batch`` 过滤器通过返回具有给定项目数的列表来“批处理”项目。
 可以使用第二个参数来填充缺失项：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
-    {% set items = ['a', 'b', 'c', 'd', 'e', 'f', 'g'] %}
+    {% set items = ['a', 'b', 'c', 'd'] %}
 
     <table>
     {% for row in items|batch(3, 'No item') %}
@@ -20,7 +20,7 @@ The ``batch`` filter "batches" items by returning a list of lists with the given
 
 以上示例将渲染为：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     <table>
         <tr>
@@ -30,11 +30,6 @@ The ``batch`` filter "batches" items by returning a list of lists with the given
         </tr>
         <tr>
             <td>d</td>
-            <td>e</td>
-            <td>f</td>
-        </tr>
-        <tr>
-            <td>g</td>
             <td>No item</td>
             <td>No item</td>
         </tr>
@@ -45,3 +40,4 @@ The ``batch`` filter "batches" items by returning a list of lists with the given
 
 * ``size``: 批量的大小; 小数将被四舍五入
 * ``fill``: 用于填充缺失的项
+* ``preserve_keys``: 是否保留键

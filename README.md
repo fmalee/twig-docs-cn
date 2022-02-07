@@ -13,6 +13,7 @@
 ## 同步记录
 
 - `2.X`
+  - `1e04274f34e9f80894865a1478e72b363e19179b`（2022-02-04）
   - `c8020aa5d848fcb934b047d85304544b174a95a7`（2018-10-12）
 
 ## 未译章节
@@ -20,10 +21,8 @@
 - 修改了 `index.rst`，以适应新主题
 - `advanced.rst`
 - `recipesrst`
-- `filters/batch.rst` (仅一段)
 - `tags/embed.rst`
 - `tags/extends.rst`
-- `tags/use.rst` (仅一段)
 
 
 ## 术语约定
@@ -59,9 +58,13 @@
 
 ## 生成主题
 
-临时使用了Doctrine ORM文档的主题，当未修改主题本身。
+临时使用了Doctrine ORM文档的主题，但未修改主题本身。
 
 ### 如何生成
+
+官方在2020/11/5的`c9328ad613a171dd3c084ad9ab8aadcb853009ea` 提交上才引入了：DOCtor-RST config + Sphinx build + GithubActions
+
+
 
 > 官方没有提供生成说明，需要自己配置。
 

@@ -3,7 +3,7 @@
 
 ``merge`` 过滤器可以合并两个数组：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set values = [1, 2] %}
 
@@ -15,7 +15,7 @@
 
 ``merge`` 过滤器也适用于一个散列：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set items = { 'apple': 'fruit', 'orange': 'fruit', 'peugeot': 'unknown' } %}
 
@@ -29,7 +29,7 @@
 
     如果要确保保留住在数组中定义某些值（通过给定的默认值），请反转调用中的两个元素：
 
-    .. code-block:: jinja
+    .. code-block:: twig
 
         {% set items = { 'apple': 'fruit', 'orange': 'fruit' } %}
 
@@ -41,4 +41,4 @@
 
     在内部，Twig使用PHP的 `array_merge`_ 函数。它通过将Traversable转换为数组来支持它们。
 
-.. _`array_merge`: https://secure.php.net/array_merge
+.. _`array_merge`: https://www.php.net/array_merge

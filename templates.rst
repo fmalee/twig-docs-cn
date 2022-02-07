@@ -6,7 +6,7 @@
 概要
 --------
 
-模板实际就是一个简单的文本文件。它可以生成任意基于文本的格式（HTML、XML、CSV、LaTeX等等）。
+模板实际就是一个常规的文本文件。它可以生成任意基于文本的格式（HTML、XML、CSV、LaTeX等等）。
 它没有特定的扩展，``.html`` 或 ``.xml`` 都行。
 
 模板包含 **变量** 或 **表达式**，在评估模板时，这些带值的变量或表达式会被替换；
@@ -14,7 +14,7 @@
 
 下面是一个非常简单的模板，它阐述了一些基础知识。稍后我们将进一步讨论。
 
-.. code-block:: html+jinja
+.. code-block:: html+twig
 
     <!DOCTYPE html>
     <html>
@@ -34,7 +34,7 @@
     </html>
 
 有两种形式的分隔符：``{% ... %}`` 和 ``{{ ... }}``。
-前者用于执行语句，例如 ``for`` 循环；后者将表达式的结果输出到模板中。
+前者用于执行语句，例如 ``for`` 循环；后者将打印表达式的结果。
 
 IDE集成
 ----------------
@@ -64,28 +64,16 @@ IDE集成
 应用将变量传入模板中进行处理。变量可以包含你能访问的属性或元素。
 变量的可视化表现形式很大程度上取决于提供变量的应用。
 
-你可以使用点号（``.``）来访问变量的属性(方法或PHP对象的属性，或PHP数组单元），也可以使用所谓的"下标"语法（``[]``）:
+使用点号（``.``）来访问变量的属性（PHP对象的方法或属性，或PHP数组的单元）：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ foo.bar }}
-    {{ foo['bar'] }}
-
-当属性包含特殊字符时（比如 ``-``，将被解析为减号操作符），可以使用 ``attribute`` 函数访问变量属性：
-
-.. code-block:: jinja
-
-    {# 相当于非工作的foo.data-foo #}
-    {{ attribute(foo, 'data-foo') }}
 
 .. note::
 
     你务必要知道花括号并 *不是* 变量的一部分，它只是一个打印语句。
     在访问标签内部的变量时，不要将其放在花括号中。
-
-如果变量或属性不存在，当 ``strict_variables`` 选项被设置为 ``false`` 时，你将接收一个 ``null`` 值。
-另外，如果 ``strict_variables`` 被设置了，Twig将抛出一个错误（查看
-:ref:`环境选项<environment_options>`）。
 
 .. sidebar:: 实现
 
@@ -100,14 +88,26 @@ IDE集成
     * 如果不是，如果 ``foo`` 是一个对象，检查 ``hasBar`` 是不是有效的方法。
     * 如果不是，即返回一个 ``null`` 值。
 
-    ``foo['bar']`` 在另一方面只适用于PHP数组：
+    Twig还支持一种特定的语法来访问PHP数组中的单元，``foo['bar']``：
 
     * 检查 ``foo`` 是不是一个数组，并检查 ``bar`` 是不是一个有效元素；
     * 如果不是，即返回一个 ``null`` 值。
 
+如果变量或属性不存在，当 ``strict_variables`` 选项被设置为 ``false`` 时，你将接收一个 ``null`` 值。
+另外，如果 ``strict_variables`` 被设置了，Twig将抛出一个错误（查看
+:ref:`环境选项<environment_options>`）。
+
 .. note::
 
     如果你想访问变量的动态属性，请使用 :doc:`attribute<functions/attribute>` 函数替代。
+
+    当属性包含特殊字符（如将被解释为减号运算符的 ``-``）时，
+    ``attribute`` 函数也能派上用场：
+
+    .. code-block:: twig
+
+        {# 相当于非工作的foo.data-foo #}
+        {{ attribute(foo, 'data-foo') }}
 
 全局变量
 ~~~~~~~~~~~~~~~~
@@ -123,7 +123,7 @@ IDE集成
 
 你可以在代码块内为变量赋值。这里用到了 :doc:`set<tags/set>` 标签：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set foo = 'foo' %}
     {% set foo = [1, 2] %}
@@ -132,30 +132,34 @@ IDE集成
 过滤器
 -------
 
-可以通过 **过滤器** 来修改变量。过滤器中，用一个管道符号（``|``）来分隔多个过滤器，还可以在括号中加入可选参数。
+可以通过 **过滤器** 来修改变量。过滤器中，用一个管道符号（``|``）来分隔多个过滤器。
 可以链接多个过滤器。一个过滤器的输出结果将用在下一个过滤器中。
 
 下面的例子会删除所有带有 ``name`` 和title-cases的HTML标签:
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ name|striptags|title }}
 
-过滤器接收由圆括号包裹的参数。这个例子中，合并了一个由逗号分隔的参数列表：
+过滤器接收由圆括号包裹的参数。本例使用了逗号拼接列表中的元素：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ list|join(', ') }}
 
-要在一段代码中应用过滤器，需要将它包裹在 :doc:`filter<tags/filter>` 标签中：
+要在一段代码中应用过滤器，请使用 :doc:`apply<tags/apply>` 标签:
 
-.. code-block:: jinja
+.. code-block:: twig
 
-    {% filter upper %}
+    {% apply upper %}
         This text becomes uppercase
-    {% endfilter %}
+    {% endapply %}
 
 访问 :doc:`过滤器<filters/index>` 页面，了解更多内置过滤器。
+
+.. note::
+
+    ``apply`` 标签在Twig 2.9中引入；之前的版本可以使用 ``filter`` 标签。
 
 函数
 ---------
@@ -164,7 +168,7 @@ IDE集成
 
 举个例子，``range`` 函数返回一个包含整数等差数列的列表：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for i in range(0, 3) %}
         {{ i }},
@@ -172,10 +176,12 @@ IDE集成
 
 访问 :doc:`函数<functions/index>` 页面，了解更多的内置函数。
 
+.. _named-arguments:
+
 具名实参
 ---------------
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for i in range(low=1, high=10, step=2) %}
         {{ i }},
@@ -183,7 +189,7 @@ IDE集成
 
 使用具名实参，使模板中作为参数被传递的值更加清晰。
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ data|convert_encoding('UTF-8', 'iso-2022-jp') }}
 
@@ -193,7 +199,7 @@ IDE集成
 
 具名实参同样允许你跳过某些不需要改变默认值的参数：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {# 第一个参数是日期格式，如果传递的是空值，它将是默认的全局日期格式。 #}
     {{ "now"|date(null, "Europe/Paris") }}
@@ -203,7 +209,7 @@ IDE集成
 
 你还可以在一次调用中，同时使用位置参数和具名实参，此时，位置参数必须放在具名实参前面：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ "now"|date('d/m/Y H:i', timezone="Europe/Paris") }}
 
@@ -219,7 +225,7 @@ IDE集成
 
 例如，要显示一个名为 ``users`` 的变量中提供的用户列表，请使用 :doc:`for<tags/for>` 标签：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     <h1>Members</h1>
     <ul>
@@ -230,7 +236,7 @@ IDE集成
 
 :doc:`if<tags/if>` 标签可以用来测试一个表达式：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% if users|length > 0 %}
         <ul>
@@ -247,9 +253,9 @@ IDE集成
 
 要在模板中注释某一行，使用注释语法 ``{# ... #}``。这常用于调试或者为自己或其他模板设计师添加信息。
 
-.. code-block:: jinja
+.. code-block:: twig
 
-    {# note: disabled template because we no longer use this
+    {# 注意：已禁用模板，因为我们不再使用它
         {% for user in users %}
             ...
         {% endfor %}
@@ -261,13 +267,13 @@ IDE集成
 Twig提供的 :doc:`include<functions/include>`
 函数使你更方便地在模板中引入模板，并将该模板的已渲染内容返回到当前模板：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ include('sidebar.html') }}
 
 默认地，被引入的模板可以访问当前模板的上下文。这意味着，在主模板中定义的任意变量，在被引入的模板中同样可用。
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for box in boxes %}
         {{ include('render_box.html') }}
@@ -275,10 +281,10 @@ Twig提供的 :doc:`include<functions/include>`
 
 被引入的 ``render_box.html`` 模板可以访问 ``box`` 变量。
 
-模板的文件名，取决于模板加载器。举个例子：``Twig_Loader_Filesystem``
-许你通过给定文件名称访问其他模板。你可以使用一个斜线来访问子目录内的模板：
+模板的文件名，取决于模板加载器。举个例子：``\Twig\Loader\FilesystemLoader``
+允许你通过给定文件名称访问其他模板。你可以使用一个斜线来访问子目录内的模板：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ include('sections/articles/sidebar.html') }}
 
@@ -290,17 +296,17 @@ Twig提供的 :doc:`include<functions/include>`
 模板继承是Twig最强大的地方。
 模板继承允许你构建一个包含你网站中所有通用元素的基础的"骨架"模板，并定义子模版可以重写的 **区块**。
 
-听起来很复杂，但实际上很简单。以一个例子来说，会更容易明白点。
+从一个例子开始更容易理解这个概念。
 
-现在，我们来定义一个基础的 ``base.html`` 模板，它定义了一个简单的HTML骨架文档，你可以在一个简单的两栏页面中使用：
+让我们定义一个基础的 ``base.html`` 模板，它定义了可能用于两栏页面的HTML框架文档：
 
-.. code-block:: html+jinja
+.. code-block:: html+twig
 
     <!DOCTYPE html>
     <html>
         <head>
             {% block head %}
-                <link rel="stylesheet" href="style.css" />
+                <link rel="stylesheet" href="style.css"/>
                 <title>{% block title %}{% endblock %} - My Webpage</title>
             {% endblock %}
         </head>
@@ -319,7 +325,7 @@ Twig提供的 :doc:`include<functions/include>`
 
 子模版大概是这个样子的：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% extends "base.html" %}
 
@@ -344,7 +350,7 @@ Twig提供的 :doc:`include<functions/include>`
 
 可以通过使用 :doc:`parent<functions/parent>` 函数来渲染父级区块。它将返回父级区块的结果：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% block sidebar %}
         <h3>Table Of Contents</h3>
@@ -359,8 +365,7 @@ Twig提供的 :doc:`include<functions/include>`
 
 .. note::
 
-    Twig 在 :doc:`use<tags/use>` 标签的帮助下，还能支持多重继承和所谓的横向重用。
-    这是一个几乎不会在常规模板中用到的高级特性。
+    在 :doc:`use<tags/use>` 标签的帮助下，Twig还可以通过“横向重用”来支持多重继承。
 
 HTML转义
 -------------
@@ -376,18 +381,18 @@ Twig两者都支持，自动转义是默认启用的。
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 如果选择了手动转义，那么转义所需变量就是 **你** 的职责了。
-哪些变量需要转义呢？反正任何变量都不要相信。
+转义什么？来自不可信来源的任何变量。
 
-转义变量，通过使用 :doc:`escape<filters/escape>` 或 ``e`` 过滤器：
+可以使用 :doc:`escape<filters/escape>` 或 ``e`` 过滤器来转义变量：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ user.username|e }}
 
 默认地，``escape`` 过滤器使用 ``html``
-策略，但取决于转义的上下文，你可能需要显式地使用其他的可用策略：
+策略，但取决于转义的上下文，你可能需要显式地使用其他的策略：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ user.username|e('js') }}
     {{ user.username|e('css') }}
@@ -400,7 +405,7 @@ Twig两者都支持，自动转义是默认启用的。
 不论是否启用了自动转义，你都可以在模板中使用 :doc:`autoescape<tags/autoescape>`
 标签来标记某一部分是否已被转义：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% autoescape %}
         Everything will be automatically escaped in this block (using the HTML strategy)
@@ -408,7 +413,7 @@ Twig两者都支持，自动转义是默认启用的。
 
 默认地，自动转义使用 ``html`` 转义策略。如果你在其他上下文中输出变量，你必须使用合适的转义策略显式地进行转义：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% autoescape 'js' %}
         Everything will be automatically escaped in this block (using the JS strategy)
@@ -422,7 +427,7 @@ Twig两者都支持，自动转义是默认启用的。
 
 最简单的办法就是使用一个变量表达式来输出变量定界符（``{{``）：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ '{{' }}
 
@@ -431,64 +436,26 @@ Twig两者都支持，自动转义是默认启用的。
 宏指令
 ------
 
-宏指令堪比常规程序语言中函数。使用宏指令可以重用常用的HTML片段，而不用再自己手动复制了。
-
-宏指令通过 :doc:`macro<tags/macro>` 标签进行定义。
-这里有一个渲染表单元素的宏指令小例子（在后文中，我们称之为 ``forms.html``）：
-
-.. code-block:: jinja
-
-    {% macro input(name, value, type, size) %}
-        <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" size="{{ size|default(20) }}" />
-    {% endmacro %}
-
-宏指令可在任意模版中定义，在使用前，必须通过 :doc:`import<tags/import>` 标签导入：
-
-.. code-block:: jinja
-
-    {% import "forms.html" as forms %}
-
-    <p>{{ forms.input('username') }}</p>
-
-或者，你可以通过使用 :doc:`from<tags/from>`
-标签从一个模版中引入个别宏指令名到当前命名空间中，还可以以别名的形式使用它们：
-
-.. code-block:: jinja
-
-    {% from 'forms.html' import input as input_field %}
-
-    <dl>
-        <dt>Username</dt>
-        <dd>{{ input_field('username') }}</dd>
-        <dt>Password</dt>
-        <dd>{{ input_field('password', '', 'password') }}</dd>
-    </dl>
-
-当没有在宏调用中为宏指令参数提供默认值时，可以为它定义一个：
-
-.. code-block:: jinja
-
-    {% macro input(name, value = "", type = "text", size = 20) %}
-        <input type="{{ type }}" name="{{ name }}" value="{{ value|e }}" size="{{ size }}" />
-    {% endmacro %}
-
-如果额外的位置参数被传递给了一个宏调用，这些参数最终会作为值的列表存放在指定的 ``varargs`` 变量中。
+宏指令堪比常规程序语言中函数。它们有助于重用HTML片段，避免重复。
+它们在 :doc:`macro<tags/macro>` 标签文档中有描述。
 
 .. _twig-expressions:
 
 表达式
 -----------
 
-Twig允许在任意位置使用表达式。表达式非常类似常规的PHP，甚至你不需要用到PHP也会感到非常舒适。
+Twig允许在任意位置使用表达式。
 
 .. note::
 
-    运算符优先级如下所示，从最低优先级开始：``b-and``、``b-xor``、``b-or``、``or``、``and``,
-    ``==``、``!=``、``<``、``>``、``>=``、``<=``、``in``、``matches``,
-    ``starts with``、``ends with``、``..``、``+``、``-``、``~``、``*``、``/``,
-    ``//``、``%``、``is``、``**``、``|``、``[]`` 以及 ``.``。
+    运算符优先级如下所示，从最低优先级开始：``?:`` (三元运算符)、``b-and``、
+    ``b-xor``、``b-or``、``or``、``and``、``==``、``!=``、``<=>``、``<``、
+    ``>``、``>=``、``<=``、``in``、``matches``、``starts with``、
+    ``ends with``、``..``、``+``、``-``、``~``、``*``、``/``、``//``、
+    ``%``、``is``（测试）、``**``、``??``、``|``（过滤器）, ``[]`` 以及 ``.``：
 
-    .. code-block:: jinja
+
+    .. code-block:: twig
 
         {% set greeting = 'Hello ' %}
         {% set name = 'Fabien' %}
@@ -508,14 +475,14 @@ Twig允许在任意位置使用表达式。表达式非常类似常规的PHP，�
   如果字符串前面有一个反斜杠（``\``），则字符串可以包含分隔符 -- 例如 ``'It\'s good'``。
   如果字符串包含了一个反斜线(例如，``'c:\Program Files'``)，以用两个反斜线来转义它（例如，``'c:\\Program Files'``）。
 
-* ``42`` / ``42.23``: 整型数和浮点数只需写下它们即可创建。
-  如果有一个点就表示该数字是浮点数，那么没有这个点即是一个整型数。
+* ``42`` / ``42.23``: 整数和浮点数是通过写下数字来创建的。
+  如果存在点号，则该数字为浮点数，否则为整数。
 
 * ``["foo", "bar"]``: 数组，由一对方括号（``[]``）包裹的由逗号（``,``）分隔的表达式序列组成。
 
 * ``{"foo": "bar"}``: 散列，由一对花括号（``{}``）包裹的以逗号（``,``）分隔的键值对列表构成。
 
-  .. code-block:: jinja
+  .. code-block:: twig
 
     {# 键是字符串 #}
     { 'foo': 'foo', 'bar': 'bar' }
@@ -525,6 +492,11 @@ Twig允许在任意位置使用表达式。表达式非常类似常规的PHP，�
 
     {# 键是数字 #}
     { 2: 'foo', 4: 'bar' }
+
+    {# 如果与变量名相同，则可以省略键 #}
+    { foo }
+    {# 相当于 #}
+    { 'foo': foo }
 
     {# 键是表达式（表达式必须括在括号中） #}
     {% set foo = 'foo' %}
@@ -537,22 +509,24 @@ Twig允许在任意位置使用表达式。表达式非常类似常规的PHP，�
 
 数组和散列可以嵌套：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set foo = [1, {"foo": "bar"}] %}
 
 .. tip::
 
-    使用单引号或双引号字符串在性能上没有区别，但字符串插值只被双引号字符串支持。
+    使用双引号或单引号字符串对性能没有影响，但
+    :ref:`字符串插值 <templates-string-interpolation>`
+    只被双引号字符串支持。
 
 .. _math-operator:
 
 数学
 ~~~~
 
-Twig允许值计算。这很少用在模版中，但由于完整性的缘故而存在。Twig支持以下运算符：
+Twig允许你在模板中进行数学运算；并支持以下运算符：
 
-* ``+``: 相加。将两个对象一起相加（操作数将转换为数字）。 ``{{ 1 + 1 }}`` 的结果为 ``2``。
+* ``+``: 相加。将两个数字一起相加（操作数将转换为数字）。 ``{{ 1 + 1 }}`` 的结果为 ``2``。
 
 * ``-``: 相减。从第一个数字中减去第二个数字。 ``{{ 3 - 2 }}`` 的结果为 ``1``。
 
@@ -568,7 +542,7 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 
 * ``**``: 求幂。将左操作数提升到右操作数的幂。``{{ 2 ** 3 }}`` 的结果为 ``8``。
 
-.. _logic-operator:
+.. _template_logic:
 
 逻辑
 ~~~~~
@@ -600,7 +574,7 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 
 你还可以检查字符串是否由另一个字符串开头 ``starts with`` 或结尾 ``ends with``：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% if 'Fabien' starts with 'F' %}
     {% endif %}
@@ -612,7 +586,7 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 
     对于复杂的字符串比较，``matches`` 操作符允许你使用`正则表达式`_：
 
-    .. code-block:: jinja
+    .. code-block:: twig
 
         {% if phone matches '/^[\\d\\.]+$/' %}
         {% endif %}
@@ -623,10 +597,9 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 ~~~~~~~~~~~~~~~~~~~~
 
 包含操作符 ``in`` 用于测试是否存在包含关系。
-
 如果左侧运算对象包含在右侧运算对象中，则返回 ``true``：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {# 返回 true #}
 
@@ -640,7 +613,7 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 
 使用 ``not in`` 操作符执行一个否定测试：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% if 1 not in [1, 2, 3] %}
 
@@ -654,7 +627,7 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 
 使用 ``is`` 操作符执行测试。可以用于针对变量和一般表达式之间的关系进行测试。右侧操作数即是测试的名称：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {# 找出变量是否为奇数 #}
 
@@ -662,13 +635,13 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 
 测试可以接受参数：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% if post.status is constant('Post::PUBLISHED') %}
 
 ``is not`` 操作符进行一个否定测试：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% if post.status is not constant('Post::PUBLISHED') %}
 
@@ -686,10 +659,10 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 
 * ``|``: 应用一个过滤器。
 
-* ``..``: 创建一个基于操作符前后操作数的序列（这只是
+* ``..``: 创建一个基于操作符前后操作数的序列（它是
   :doc:`range<functions/range>` 函数的语法糖）：
 
-  .. code-block:: jinja
+  .. code-block:: twig
 
       {{ 1..5 }}
 
@@ -699,18 +672,18 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
   注意，由于 :ref:`运算符优先级规则 <twig-expressions>`
   的原因，你必须使用在将本操作符与过滤器组合时使用括号包裹：
 
-  .. code-block:: jinja
+  .. code-block:: twig
 
       (1..5)|join(', ')
 
 * ``~``: 将所有操作数转换为字符串并连接它们。``{{ "Hello " ~ name ~ "!" }}``
   将会返回 ``Hello John!`` (假定 ``name`` 为 ``'John'``)。
 
-* ``.``、``[]``: 获取对象的属性。
+* ``.``、``[]``: 获取变量的属性。
 
 * ``?:``: 三元操作符：
 
-  .. code-block:: jinja
+  .. code-block:: twig
 
       {{ foo ? 'yes' : 'no' }}
       {{ foo ?: 'no' }} 等同于 {{ foo ? foo : 'no' }}
@@ -718,10 +691,12 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 
 * ``??``: 非空操作符：
 
-  .. code-block:: jinja
+  .. code-block:: twig
 
       {# 如果定义了foo，则返回foo的值而不是null，否则返回'no' #}
       {{ foo ?? 'no' }}
+
+.. _templates-string-interpolation:
 
 字符串插值
 ~~~~~~~~~~~~~~~~~~~~
@@ -729,7 +704,7 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 字符串插值（``#{expression}``）允许在一个 *双引号字符串* 中出现任意有效的表达式。
 评估表达式的结果，就是将其插入到字符串中：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ "foo #{bar} baz" }}
     {{ "foo #{1 + 2} baz" }}
@@ -739,52 +714,68 @@ Twig允许值计算。这很少用在模版中，但由于完整性的缘故而�
 空白控制
 ------------------
 
+.. versionadded:: 2.8
+
+    Twig 2.8中添加了标签级别的行空白控制。
+
 模板标签后的第一个换行会被自动移除（如同PHP）。
 空白并不是由模板引擎进一步修改的，所以每个空白（空格、制表符、换行）都被未改变地返回。
 
-可以使用 ``spaceless`` 标签移除 *HTML标签之间* 的空白：
+你还可以在每个标签级别上控制空白。通过使用标签上的空白控制修饰符，可以修剪前导和/或尾随空白。
 
-.. code-block:: jinja
+Twig支持两中修饰符：
 
-    {% spaceless %}
-        <div>
-            <strong>foo bar</strong>
-        </div>
-    {% endspaceless %}
+* *修剪空白* 的 ``-`` 修饰符：删除所有空白（包括换行符）；
 
-    {# 输出： <div><strong>foo bar</strong></div> #}
+* *修剪行空白* 的 ``~`` 修饰符：删除所有空白（不包括换行符）。
+  在右侧使用此修饰符，会禁用默认删除从 PHP 继承的第一个换行符。
 
-除了 ``spaceless`` 标签，你还可以针对每个标签级进行空白控制。
-通过对标签使用空白控制修改器，可以移除其首尾的空白：
+修饰符可以用在标签的任一侧，例如 ``{%-`` 或 ``-%}`` ，它们会占用标签那一侧的所有空格。
+可以在标签的一侧或两侧使用修饰符：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% set value = 'no spaces' %}
-    {#- 没有首尾空格 -#}
+    {#- 没有首尾空白 -#}
     {%- if true -%}
         {{- value -}}
     {%- endif -%}
+    {# 输出：'no spaces' #}
 
-    {# 输出 'no spaces' #}
+    <li>
+        {{ value }}    </li>
+    {# 输出：'<li>\n    no spaces    </li>' #}
 
-上面的例子展示了默认的空白控制修改器，以及如何移除标签左右的空白。
-移除空白会删除标签左侧或右侧的所有空白。你也可以使用它来消除一个标签某一侧的空白：
+    <li>
+        {{- value }}    </li>
+    {# 输出：'<li>no spaces    </li>' #}
 
-.. code-block:: jinja
+    <li>
+        {{~ value }}    </li>
+    {# 输出：'<li>\nno spaces    </li>' #}
 
-    {% set value = 'no spaces' %}
-    <li>    {{- value }}    </li>
+.. tip::
 
-    {# 输出： '<li>no spaces    </li>' #}
+    除了空白修饰符之外，Twig还有一个 ``spaceless`` 过滤器，可以移除
+    **HTML标签之间** 的空白：
+
+    .. code-block:: html+twig
+
+        {% apply spaceless %}
+            <div>
+                <strong>foo bar</strong>
+            </div>
+        {% endapply %}
+
+        {# 将会输出：<div><strong>foo bar</strong></div> #}
+
+    ``apply`` 标签是在Twig 2.9中引入的；在之前的版本可以使用 ``filter`` 标签。
 
 扩展
 ----------
 
-Twig可被轻松扩展。
-
-如果你在寻找新的标签、过滤器、或者函数，可以看一下Twig官方的 `扩展仓库`_。
-
-如果想要创建自己的扩展，请阅读 :ref:`创建扩展<creating_extensions>` 章节。
+Twig支持扩展。如果想要创建自己的扩展，请阅读
+:ref:`创建扩展<creating_extensions>` 章节。
 
 .. _`Twig bundle`:                https://github.com/Anomareh/PHP-Twig.tmbundle
 .. _`Jinja syntax plugin`:        http://jinja.pocoo.org/docs/integration/#vim
@@ -792,12 +783,11 @@ Twig可被轻松扩展。
 .. _`Twig syntax plugin`:         http://plugins.netbeans.org/plugin/37069/php-twig
 .. _`Twig plugin`:                https://github.com/pulse00/Twig-Eclipse-Plugin
 .. _`Twig language definition`:   https://github.com/gabrielcorpse/gedit-twig-template-language
-.. _`扩展仓库`:                    https://github.com/twigphp/Twig-extensions
 .. _`Twig syntax mode`:           https://github.com/bobthecow/Twig-HTML.mode
 .. _`other Twig syntax mode`:     https://github.com/muxx/Twig-HTML.mode
 .. _`Notepad++ Twig Highlighter`: https://github.com/Banane9/notepadplusplus-twig
 .. _`web-mode.el`:                http://web-mode.org/
-.. _`正则表达式`:                   https://secure.php.net/manual/en/pcre.pattern.php
+.. _`正则表达式`:                   https://www.php.net/manual/en/pcre.pattern.php
 .. _`PHP-twig for atom`:          https://github.com/reesef/php-twig
 .. _`TwigFiddle`:                 https://twigfiddle.com/
 .. _`Twig pack`:                  https://marketplace.visualstudio.com/items?itemName=bajdzis.vscode-twig-pack

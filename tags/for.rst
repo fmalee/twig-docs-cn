@@ -3,7 +3,7 @@
 
 循环遍历一个序列中的每个项。例如，要显示一个名为 ``users`` 的变量提供的用户列表：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     <h1>Members</h1>
     <ul>
@@ -18,7 +18,7 @@
 
 如果你确实需要迭代一系列数字，则可以使用 ``..`` 运算符：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for i in 0..10 %}
         * {{ i }}
@@ -28,7 +28,7 @@
 
 它也适用于字母：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for letter in 'a'..'z' %}
         * {{ letter }}
@@ -36,7 +36,7 @@
 
 ``..`` 运算符的两边都可以采取任何表达：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for letter in 'a'|upper..'z'|upper %}
         * {{ letter }}
@@ -64,7 +64,7 @@
 ``loop.parent``       父上下文
 ===================== =============================================================
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for user in users %}
         {{ loop.index }} - {{ user.username }}
@@ -79,10 +79,16 @@
 添加条件
 ------------------
 
+.. tip::
+
+    从Twig 2.10开始，使用 :doc:`filter <../filters/filter>` 过滤器代替，
+    或者在 ``for`` 主体中使用一个 ``if`` 条件
+    （如果您的条件依赖于循环中更新的变量，并且您没有使用 ``loop`` 变量）。
+
 与PHP不同，它不可能在循环中 ``break`` 或 ``continue``。
 但是，你可以在迭代期间过滤该序列，以便跳过指定项。以下示例将跳过所有未激活的用户：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     <ul>
         {% for user in users if user.active %}
@@ -103,7 +109,7 @@
 
 如果由于序列为空而没有发生迭代，则可以使用 ``else`` 方法来渲染一个替换区块：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     <ul>
         {% for user in users %}
@@ -118,7 +124,7 @@
 
 默认情况下，一个循环会遍历序列的值。但你可以使用 ``keys`` 过滤器来迭代键：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     <h1>Members</h1>
     <ul>
@@ -132,7 +138,7 @@
 
 你还可以同时访问键和值：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     <h1>Members</h1>
     <ul>
@@ -146,7 +152,7 @@
 
 你可能希望迭代值的一个子集。这可以通过使用 :doc:`slice <../filters/slice>` 过滤器来实现：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     <h1>Top Ten Members</h1>
     <ul>

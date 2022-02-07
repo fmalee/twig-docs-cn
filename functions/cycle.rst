@@ -3,7 +3,7 @@
 
 ``cycle`` 函数会循环的使用一个数组的值：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set start_year = date() | date('Y') %}
     {% set end_year = start_year + 5 %}
@@ -14,7 +14,7 @@
 
 该数组可以包含任意数量的值：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set fruits = ['apple', 'orange', 'citrus'] %}
 

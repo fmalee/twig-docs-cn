@@ -3,7 +3,7 @@
 
 ``round`` 过滤器将一个数字舍入到给定精度：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ 42.55|round }}
     {# outputs 43 #}

@@ -3,7 +3,7 @@
 
 ``flush`` 标签告诉Twig刷新输出缓冲区：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% flush %}
 
@@ -11,4 +11,4 @@
 
     在内部，Twig使用PHP的 `flush`_ 函数。
 
-.. _`flush`: https://secure.php.net/flush
+.. _`flush`: https://www.php.net/flush

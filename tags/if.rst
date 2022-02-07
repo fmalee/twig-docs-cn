@@ -5,7 +5,7 @@ Twig中的 ``if`` 语句相当于PHP的if语句。
 
 在最简单的形式中，你可以使用它来测试表达式的计算结果是否为 ``true``：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% if online == false %}
         <p>Our website is in maintenance mode. Please, come back later.</p>
@@ -13,7 +13,7 @@ Twig中的 ``if`` 语句相当于PHP的if语句。
 
 你还可以测试一个数组是否为空：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% if users %}
         <ul>
@@ -29,7 +29,7 @@ Twig中的 ``if`` 语句相当于PHP的if语句。
 
 你还可以用 ``not`` 来检查一个值是否等于 ``false``：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% if not user.subscribed %}
         <p>You are not subscribed to our mailing list.</p>
@@ -37,7 +37,7 @@ Twig中的 ``if`` 语句相当于PHP的if语句。
 
 对于多个条件，可以使用 ``and`` 和 ``or``：
 
-.. code-block:: jinja
+.. code-block:: html+twig
 
     {% if temperature > 18 and temperature < 27 %}
         <p>It's a nice day for a walk in the park.</p>
@@ -45,7 +45,7 @@ Twig中的 ``if`` 语句相当于PHP的if语句。
 
 对于多个分支，可以像PHP一样使用 ``elseif`` 和 ``else``。你也可以使用更复杂的 ``expressions``：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% if product.stock > 10 %}
        Available

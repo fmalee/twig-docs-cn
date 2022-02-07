@@ -3,14 +3,14 @@
 
 ``min`` 返回一个序列或一组值中的最小值：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ min(1, 3, 2) }}
     {{ min([1, 3, 2]) }}
 
 当调用一个映射时，``min`` 将忽略键并仅比较值：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ min({2: "e", 3: "a", 1: "b", 5: "d", 4: "c"}) }}
     {# 返回 "a" #}

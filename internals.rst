@@ -21,23 +21,23 @@ Twig是如何工作的？
 词法分析器
 ----------
 
-词法分析器将一个模板源代码标记为令牌流（每个令牌是一个 ``Twig_Token`` 实例，并且流是一个
-``Twig_TokenStream`` 实例）。默认词法分析器能识别13种不同的令牌类型：
+词法分析器将一个模板源代码标记为令牌流（每个令牌是一个 ``\Twig\Token`` 实例，并且流是一个
+``\Twig\TokenStream`` 实例）。默认词法分析器能识别13种不同的令牌类型：
 
-* ``Twig_Token::BLOCK_START_TYPE``、``Twig_Token::BLOCK_END_TYPE``: 区块的分隔符（``{% %}``）;
-* ``Twig_Token::VAR_START_TYPE``、``Twig_Token::VAR_END_TYPE``: 变量的分隔符（``{{ }}``）;
-* ``Twig_Token::TEXT_TYPE``: 一个表达式之外的文本;
-* ``Twig_Token::NAME_TYPE``: 一个表达式中的名称;
-* ``Twig_Token::NUMBER_TYPE``: 一个表达式中的数字;
-* ``Twig_Token::STRING_TYPE``: 一个表达式中的字符串;
-* ``Twig_Token::OPERATOR_TYPE``: 一个操作符;
-* ``Twig_Token::PUNCTUATION_TYPE``: 一个标点符号;
-* ``Twig_Token::INTERPOLATION_START_TYPE``、``Twig_Token::INTERPOLATION_END_TYPE``: 用于字符串插值的分隔符;
-* ``Twig_Token::EOF_TYPE``: 模板结尾。
+* ``\Twig\Token::BLOCK_START_TYPE``、``\Twig\Token::BLOCK_END_TYPE``: 区块的分隔符（``{% %}``）;
+* ``\Twig\Token::VAR_START_TYPE``、``\Twig\Token::VAR_END_TYPE``: 变量的分隔符（``{{ }}``）;
+* ``\Twig\Token::TEXT_TYPE``: 一个表达式之外的文本;
+* ``\Twig\Token::NAME_TYPE``: 一个表达式中的名称;
+* ``\Twig\Token::NUMBER_TYPE``: 一个表达式中的数字;
+* ``\Twig\Token::STRING_TYPE``: 一个表达式中的字符串;
+* ``\Twig\Token::OPERATOR_TYPE``: 一个操作符;
+* ``\Twig\Token::PUNCTUATION_TYPE``: 一个标点符号;
+* ``\Twig\Token::INTERPOLATION_START_TYPE``、``\Twig\Token::INTERPOLATION_END_TYPE``: 用于字符串插值的分隔符;
+* ``\Twig\Token::EOF_TYPE``: 模板结尾。
 
 你可以通过调用一个环境的 ``tokenize()`` 方法来手动将源代码转换为令牌流::
 
-    $stream = $twig->tokenize(new Twig_Source($source, $identifier));
+    $stream = $twig->tokenize(new \Twig\Source($source, $identifier));
 
 由于流有一个 ``__toString()`` 方法，你可以通过echoing对象来对其进行文本表示::
 
@@ -55,14 +55,14 @@ Twig是如何工作的？
 
 .. note::
 
-    可以通过调用 ``setLexer()`` 方法来更改默认的词法分析器（``Twig_Lexer``）::
+    可以通过调用 ``setLexer()`` 方法来更改默认的词法分析器（``\Twig\Lexer``）::
 
         $twig->setLexer($lexer);
 
 解析器
 ----------
 
-解析器将令牌流转换为一个AST（抽象语法树）或节点树（``Twig_Node_Module`` 的一个实例）。
+解析器将令牌流转换为一个AST（抽象语法树）或节点树（``\Twig\Node\Module`` 的一个实例）。
 核心扩展定义像 ``for``、``if`` 等等的基本节点以及表达式节点。
 
 你可以通过调用一个环境的 ``parse()`` 方法将令牌流手动转换为节点树::
@@ -77,16 +77,16 @@ Echoing节点对象可以很好地表示树::
 
 .. code-block:: text
 
-    Twig_Node_Module(
-      Twig_Node_Text(Hello )
-      Twig_Node_Print(
-        Twig_Node_Expression_Name(name)
+    \Twig\Node\Module(
+      \Twig\Node\Text(Hello )
+      \Twig\Node\Print(
+        \Twig\Node\Expression\Name(name)
       )
     )
 
 .. note::
 
-    可以通过调用 ``setParser()`` 方法来更改默认的解析器（``Twig_TokenParser``）::
+    可以通过调用 ``setParser()`` 方法来更改默认的解析器（``\Twig\TokenParser\AbstractTokenParser``）::
 
         $twig->setParser($parser);
 
@@ -102,9 +102,9 @@ Echoing节点对象可以很好地表示树::
 一个 ``Hello {{ name }}`` 模板生成的模模板如下所示（实际输出可能因你使用的Twig版本而异）::
 
     /* Hello {{ name }} */
-    class __TwigTemplate_1121b6f109fe93ebe8c6e22e3712bceb extends Twig_Template
+    class __TwigTemplate_1121b6f109fe93ebe8c6e22e3712bceb extends \Twig\Template
     {
-        protected function doDisplay(array $context, array $blocks = array())
+        protected function doDisplay(array $context, array $blocks = [])
         {
             // line 1
             echo "Hello ";
@@ -116,6 +116,6 @@ Echoing节点对象可以很好地表示树::
 
 .. note::
 
-    可以通过调用 ``setCompiler()`` 方法来更改默认的编译器（``Twig_Compiler``）::
+    可以通过调用 ``setCompiler()`` 方法来更改默认的编译器（``\Twig\Compiler``）::
 
         $twig->setCompiler($compiler);

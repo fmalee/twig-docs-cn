@@ -3,7 +3,7 @@
 
 ``split`` 过滤器将通过给定的分隔符分割字符串，并返回一个字符串列表：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set foo = "one,two,three"|split(',') %}
     {# foo包含： ['one', 'two', 'three'] #}
@@ -16,14 +16,14 @@
 
 * 如果 ``limit`` 为零，则将其视为1。
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set foo = "one,two,three,four,five"|split(',', 3) %}
     {# foo 包含： ['one', 'two', 'three,four,five'] #}
 
 如果 ``delimiter`` 是一个空字符串，则值将被相等的块拆分。长度由 ``limit`` 参数设置（默认为一个字符）。
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% set foo = "123"|split('') %}
     {# foo 包含： ['1', '2', '3'] #}
@@ -41,5 +41,5 @@ Arguments
 * ``delimiter``: 分隔符
 * ``limit``:     限制
 
-.. _`explode`:   https://secure.php.net/explode
-.. _`str_split`: https://secure.php.net/str_split
+.. _`explode`:   https://www.php.net/explode
+.. _`str_split`: https://www.php.net/str_split

@@ -4,7 +4,7 @@
 ``defined`` 检查是否在当前上下文中定义了一个变量。
 如果你使用了 ``strict_variables`` 选项，这就非常有用：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {# 使用变量名称的 ``defined`` #}
     {% if foo is defined %}
@@ -22,7 +22,7 @@
 
 在对某些方法调用中使用变量的表达式进行 ``defined`` 测试时，请确保首先定义它们：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% if var is defined and foo.method(var) is defined %}
         ...

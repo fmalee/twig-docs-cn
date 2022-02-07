@@ -3,14 +3,14 @@
 
 ``source`` 函数返回一个模板的内容而不渲染它：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ source('template.html') }}
     {{ source(some_var) }}
 
 设置了 ``ignore_missing`` 标志后，如果对应模板不存在，Twig将返回一个空字符串：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ source('template.html', ignore_missing = true) }}
 

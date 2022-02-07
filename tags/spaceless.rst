@@ -1,9 +1,13 @@
 ``spaceless``
 =============
 
-使用 ``spaceless`` 标签可以删除 *HTML标签之间* 的空格，但不是HTML标签中的空格或纯文本中的空格：
+.. tip::
 
-.. code-block:: jinja
+    从 Twig 2.7 开始, 使用 :doc:`spaceless <../filters/spaceless>` 过滤器代替。
+
+使用 ``spaceless`` 标签可以删除 *HTML标签之间* 的空白，但不是HTML标签中或纯文本中的空白：
+
+.. code-block:: html+twig
 
     {% spaceless %}
         <div>
@@ -21,10 +25,10 @@
 
 .. tip::
 
-    如果你想创建一个实际删除一个HTML字符串中所有额外空格的标签，请注意这并不像它看起来那么容易（想一下
+    如果你想创建一个实际删除HTML字符串中所有额外空白的标签，请注意这并不像它看起来那么容易（想一下
     ``textarea`` 或 ``pre`` 示例）。使用像Tidy这样的第三方库可能是个更好的主意。
 
 .. tip::
 
-    有关空格控制的更多信息，请阅读文档的
+    有关空白控制的更多信息，请阅读文档的
     :ref:`专门章节 <templates-whitespace-control>`，并了解如何在标签上使用空格来控制修饰符。

@@ -11,7 +11,7 @@
 
 对于实现 ``__toString()`` 魔术方法（而不是 ``Countable``）的对象，它将检查是否返回一个空字符串。
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% if foo is empty %}
         ...

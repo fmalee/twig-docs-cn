@@ -1,21 +1,33 @@
 ``join``
 ========
 
+.. versionadded:: 2.6.1
+
+    Twig 2.6.1中添加了 ``and`` 参数。
+
 ``join`` 过滤器返回一个字符串，它是一个序列的项的级联：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ [1, 2, 3]|join }}
     {# returns 123 #}
 
 元素之间的分隔符默认为一个空字符串，但你可以使用可选的第一个参数定义它：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ [1, 2, 3]|join('|') }}
     {# outputs 1|2|3 #}
+
+还可以提供第二个参数，它将是序列最后两项之间使用的分隔符：
+
+.. code-block:: twig
+
+    {{ [1, 2, 3]|join(', ', ' and ') }}
+    {# 输出： 1, 2 and 3 #}
 
 参数
 ---------
 
 * ``glue``: 分隔符
+* ``and``: 最后一对输入项的分隔符

@@ -3,7 +3,7 @@
 
 ``replace`` 过滤器通过替换占位符（占位符是自由形式）来格式化给定的字符串：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ "I like %this% and %that%."|replace({'%this%': foo, '%that%': "bar"}) }}
 
@@ -20,4 +20,6 @@
 
 * ``from``: 占位符值
 
-.. seealso:: :doc:`format<format>`
+.. seealso::
+
+    :doc:`format<format>`

@@ -3,7 +3,7 @@
 
 ``iterable`` 检查变量是数组还是可遍历对象：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {# 如果foo变量是可迭代的，则求值为true #}
     {% if users is iterable %}

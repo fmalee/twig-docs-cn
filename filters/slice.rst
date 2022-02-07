@@ -3,7 +3,7 @@
 
 ``slice`` 过滤器提取一个序列、映射或字符串的一个切片：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for i in [1, 2, 3, 4, 5]|slice(1, 2) %}
         {# 将会迭代 2 和 3 #}
@@ -15,7 +15,7 @@
 
 你可以对起始和长度使用任何有效表达式：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for i in [1, 2, 3, 4, 5]|slice(start, length) %}
         {# ... #}
@@ -23,7 +23,7 @@
 
 作为语法糖，你也可以使用 ``[]`` 符号：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% for i in [1, 2, 3, 4, 5][start:length] %}
         {# ... #}
@@ -56,7 +56,7 @@
 * ``length``:        切片的长度
 * ``preserve_keys``: 是否保留键（当输入是数组时）
 
-.. _`Traversable`: https://secure.php.net/manual/en/class.traversable.php
-.. _`array_slice`: https://secure.php.net/array_slice
-.. _`mb_substr` :  https://secure.php.net/mb-substr
-.. _`substr`:      https://secure.php.net/substr
+.. _`Traversable`: https://www.php.net/manual/en/class.traversable.php
+.. _`array_slice`: https://www.php.net/array_slice
+.. _`mb_substr`:   https://www.php.net/mb-substr
+.. _`substr`:      https://www.php.net/substr

@@ -4,7 +4,7 @@
 ``raw`` 过滤器标记一个值作为“安全”，这意味着在启用自动转义的环境中如果还有变量未转义，则
 ``raw`` 是适用于它的最后一个过滤器：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% autoescape %}
         {{ var|raw }} {# var不会被转义 #}
@@ -12,9 +12,11 @@
 
 .. note::
 
+    **本注释仅适用于1.39和2.8版本之前的Twig。**
+
     在表达式中使用 ``raw`` 过滤器时要小心：
 
-    .. code-block:: jinja
+    .. code-block:: html+twig
 
         {% autoescape %}
             {% set hello = '<strong>Hello</strong>' %}

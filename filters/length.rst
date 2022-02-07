@@ -11,9 +11,9 @@
 
 对于实现了 ``__toString()`` 魔术方法（而不是 ``Countable``）的对象，它将返回该方法提供的字符串的长度。
 
-对于实现了 ``IteratorAggregate`` 接口的对象，``length`` 过滤器将使用 ``iterator_count()`` 方法返回的值。
+对于实现了 ``Traversable`` 接口的对象，``length`` 过滤器将使用 ``iterator_count()`` 方法的返回值。
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% if users|length > 10 %}
         ...

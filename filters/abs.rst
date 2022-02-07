@@ -3,7 +3,7 @@
 
 ``abs`` 过滤器返回值得绝对值。
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {# number = -5 #}
 
@@ -15,4 +15,4 @@
 
     在内部，Twig使用PHP的 `abs`_ 函数。
 
-.. _`abs`: https://secure.php.net/abs
+.. _`abs`: https://www.php.net/abs

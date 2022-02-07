@@ -3,13 +3,13 @@
 
 ``striptags`` 过滤器剥离SGML/XML标签和用一个空白替换相邻的空格：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ some_html|striptags }}
 
 你还可以提供不应剥离的标签：
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ some_html|striptags('<br><p>') }}
 
@@ -24,4 +24,4 @@
 
 * ``allowable_tags``: 不应剥离的标签
 
-.. _`strip_tags`: https://secure.php.net/strip_tags
+.. _`strip_tags`: https://www.php.net/strip_tags

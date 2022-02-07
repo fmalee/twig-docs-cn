@@ -55,7 +55,7 @@ Twig2 中文文档
 * :ref:`in <containment-operator>`
 * :ref:`is <test-operator>`
 * :ref:`数学 <math-operator>` (``+``、``-``、``/``、``%``、``//``、``*``、``**``)
-* :ref:`逻辑 <logic-operator>` (``and``、``or``、``not``、``()``、``b-and``、``b-xor``、``b-or``)
+* :ref:`逻辑 <template_logic>` (``and``、``or``、``not``、``()``、``b-and``、``b-xor``、``b-or``)
 * :ref:`比较 <comparisons-operator>` (``==``、``!=``、``<``、``>``、``>=``
   、``<=``、``===``、``starts with``、``ends with``、``matches``)
 * :ref:`其他 <other-operators>` (``..``、``|``、``~``、``.``、``[]``、``?:``)
