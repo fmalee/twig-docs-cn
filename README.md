@@ -66,12 +66,18 @@
 $ cd twig-docs-cn
 # 构建Docker镜像
 # 因为有不少依赖，所以不能使用Sphinx官方的镜像
-$ docker build -t sphinx:alpine .
+$ docker build -t twig:sphinx .
 # 运行新生成的Docker镜像，并生成HTML文档
-$ docker run --rm -v $(pwd):/docs sphinx:alpine make html
+$ docker run --rm -v $(pwd):/docs twig:sphinx make html
 ```
 
-> HTML文档在 `twig-docs-cn/__build/html` 目录
+#### Dockerfile修改
+
+因为官方的Sphinx环境有一个依赖需要访问Github，所以在 `Dockerfile` 中加了代理环境配置。
+
+如果**不需要代理**：可以将 `Dockerfile` 中的以 `ENV ` 开头的行删除，去掉代理。
+
+如果**需要代理**：修改 `ENV MY_PROXY_URL=` 中的地址为自己的地址。现在的`docker.for.mac.host.internal` 是macOS下Docker访问本地的地址。
 
 ### 本机环境
 
@@ -85,6 +91,8 @@ $ make html
 ```
 
 > 额外需要安装Git，同时保证能连同Github，有一个依赖需要克隆Github项目。
+
+生成的文档在 **`twig-docs-cn/__build/html`** 目录
 
 ## 资源
 

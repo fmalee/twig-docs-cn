@@ -1,4 +1,4 @@
-# docker build -t sphinx:alpine .
+# docker build -t twig:sphinx .
 # Image Size: 124.57 MB
 
 FROM python:alpine
