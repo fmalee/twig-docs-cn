@@ -1,6 +1,6 @@
-# Twig文档
+# Twig 2.X中文文档
 
-根据Google机译和自己的理解翻译的Twig 2的文档。
+根据Google机译和自己的理解翻译的[Twig 2.X的文档](https://github.com/twigphp/Twig/tree/2.x/doc)。
 
 限于有限的水平：
 
