@@ -1,10 +1,6 @@
 ``inline_css``
 ==============
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``inline_css`` 过滤器。
-
 ``inline_css`` 过滤器将CSS样式内联到HTML文档中：
 
 .. code-block:: html+twig

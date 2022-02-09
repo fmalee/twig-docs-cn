@@ -1,10 +1,6 @@
 ``spaceless``
 =============
 
-.. versionadded:: 2.7
-
-    Twig 2.7中添加了 ``spaceless`` 过滤器。
-
 使用 ``spaceless`` 过滤器可以删除 *HTML标签之间* 的空白，但不是HTML标签中或纯文本中的空白：
 
 .. code-block:: html+twig
@@ -28,10 +24,6 @@
     {% endapply %}
 
     {# 输出将是：<div><strong>foo</strong></div> #}
-
-.. note::
-
-    在Twig 2.9中引入了 ``apply`` 标签；在以前的版本中使用 ``filter`` 标签。
 
 此标签并非旨在“优化”生成的HTML内容的大小，而仅仅是为了避免HTML标签之间的额外空白，
 以避免浏览器在某些情况下渲染怪异(quirk)。

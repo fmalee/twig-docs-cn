@@ -1,10 +1,6 @@
 ``format_number``
 =================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``format_number`` 过滤器。
-
 ``format_number`` 过滤器用于格式化数字：
 
 .. code-block:: twig

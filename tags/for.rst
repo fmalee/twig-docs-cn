@@ -74,35 +74,6 @@
 
     ``loop.length``、``loop.revindex``、``loop.revindex0`` 以及 ``loop.last``
     变量仅适用于PHP数组，或实现了 ``Countable`` 接口的对象。
-    在使用一个条件进行循环时它们也不可用。
-
-添加条件
-------------------
-
-.. tip::
-
-    从Twig 2.10开始，使用 :doc:`filter <../filters/filter>` 过滤器代替，
-    或者在 ``for`` 主体中使用一个 ``if`` 条件
-    （如果您的条件依赖于循环中更新的变量，并且您没有使用 ``loop`` 变量）。
-
-与PHP不同，它不可能在循环中 ``break`` 或 ``continue``。
-但是，你可以在迭代期间过滤该序列，以便跳过指定项。以下示例将跳过所有未激活的用户：
-
-.. code-block:: html+twig
-
-    <ul>
-        {% for user in users if user.active %}
-            <li>{{ user.username|e }}</li>
-        {% endfor %}
-    </ul>
-
-优点是指定的循环变量将正确计数，因此不计算未迭代的用户。
-请记住，使用循环条件时不会定义类似 ``loop.last`` 的属性。
-
-.. note::
-
-    建议不要在条件中使用 ``loop`` 变量，因为它可能不会按你的预期执行。
-    例如，类似 ``loop.index > 4`` 的一个条件并不会生效，因为该索引只在该条件为真时递增（因此该条件永远不会匹配）。
 
 `else` 条件
 -----------------

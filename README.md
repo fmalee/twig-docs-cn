@@ -1,6 +1,6 @@
-# Twig 2.X中文文档
+# Twig 3.X中文文档
 
-根据Google机译和自己的理解翻译的[Twig 2.X的文档](https://github.com/twigphp/Twig/tree/2.x/doc)。
+根据Google机译和自己的理解翻译的[Twig 3.X的文档](https://github.com/twigphp/Twig/tree/3.x/doc)。
 
 限于有限的水平：
 
@@ -12,9 +12,8 @@
 
 ## 同步记录
 
-- `2.X`
-  - `1e04274f34e9f80894865a1478e72b363e19179b`（2022-02-04）
-  - `c8020aa5d848fcb934b047d85304544b174a95a7`（2018-10-12）
+- `3.X`
+  - `237f1789a7db3a0cbb8e28a75832a45b7f9fc304`（2022-02-04）
 
 ## 未译章节
 

@@ -74,10 +74,6 @@ Twig 使用一个名为 **environment** 的中心对象（它是 ``\Twig\Environ
 
   用于模板的字符集。
 
-* ``base_template_class`` *string* (defaults to ``\Twig\Template``)
-
-  用于生成的模板的基础模板类。
-
 * ``cache`` *string* or ``false``
 
   一个存储已编译的模板的绝对路径，或者设为 ``false`` 来禁用缓存（这也是默认行为）。

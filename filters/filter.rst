@@ -1,10 +1,6 @@
 ``filter``
 ==========
 
-.. versionadded:: 2.10
-
-    Twig 2.10中添加了 ``filter`` 过滤器。
-
 ``filter`` 过滤器使用箭头函数过滤序列或映射的元素。该箭头函数接收序列或映射的值：
 
 .. code-block:: twig

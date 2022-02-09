@@ -1,10 +1,6 @@
 ``country_name``
 ================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``country_name`` 过滤器。
-
 ``country_name`` 过滤器返回给定ISO-3166双字母代码的国家名称：
 
 .. code-block:: twig

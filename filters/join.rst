@@ -1,10 +1,6 @@
 ``join``
 ========
 
-.. versionadded:: 2.6.1
-
-    Twig 2.6.1中添加了 ``and`` 参数。
-
 ``join`` 过滤器返回一个字符串，它是一个序列的项的级联：
 
 .. code-block:: twig

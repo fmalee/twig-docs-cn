@@ -11,7 +11,7 @@
 
 .. note::
 
-    从Twig 1.12开始，建议使用 :doc:`include<../functions/include>`
+    建议使用 :doc:`include<../functions/include>`
     函数，因为它提供了更灵活的相同功能：
 
     * ``include`` 函数在语义上更“正确”（引入一个模板并在当前作用域内输出其渲染的内容；

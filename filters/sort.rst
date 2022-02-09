@@ -1,10 +1,6 @@
 ``sort``
 ========
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``arrow`` 参数。
-
 ``sort`` 过滤器对一个数组进行排序：
 
 .. code-block:: twig

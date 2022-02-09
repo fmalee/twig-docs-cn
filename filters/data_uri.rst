@@ -1,10 +1,6 @@
 ``data_uri``
 ============
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``data_uri`` 过滤器。
-
 ``data_uri`` 过滤器使用 `RFC 2397`_ 中定义的数据方案来生成URL：
 
 .. code-block:: html+twig

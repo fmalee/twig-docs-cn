@@ -1,10 +1,6 @@
 ``format_time``
 ===============
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``format_time`` 过滤器。
-
 ``format_time`` 过滤器格式化时间。它的行为方式与 :doc:`format_datetime<format_datetime>`
 过滤器完全相同，但没有日期。
 
@@ -35,3 +31,5 @@
 * ``locale``: 语言区域
 * ``timeFormat``: 时间格式
 * ``pattern``: 日期时间模式
+* ``timezone``: 日期时区
+* ``calendar``: 日历（默认为公历）

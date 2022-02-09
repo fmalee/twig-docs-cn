@@ -102,7 +102,7 @@ Echoing节点对象可以很好地表示树::
 一个 ``Hello {{ name }}`` 模板生成的模模板如下所示（实际输出可能因你使用的Twig版本而异）::
 
     /* Hello {{ name }} */
-    class __TwigTemplate_1121b6f109fe93ebe8c6e22e3712bceb extends \Twig\Template
+    class __TwigTemplate_1121b6f109fe93ebe8c6e22e3712bceb extends Template
     {
         protected function doDisplay(array $context, array $blocks = [])
         {

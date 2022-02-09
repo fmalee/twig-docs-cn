@@ -1,10 +1,6 @@
 ``markdown_to_html``
 ====================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``markdown_to_html`` 过滤器。
-
 ``markdown_to_html`` 过滤器将Markdown区块转换为HTML：
 
 .. code-block:: twig
@@ -32,7 +28,7 @@
 .. code-block:: twig
 
     {{ include('some_template.markdown.twig')|markdown_to_html }}
-    
+
     {{ changelog|markdown_to_html }}
 
 .. note::
@@ -69,6 +65,12 @@
                 }
             }
         });
-       
+
     之后，需要安装您选择的markdown库。
     其中一些在 ``twig/markdown-extra`` 包的 ``require-dev`` 部分有说明。
+
+.. note::
+
+    如果使用 Symfony（全栈），并用 ``twig/extra-bundle`` 和 ``league/commonmark``
+    作为你的 Markdown 库，你可以配置 CommonMark 扩展。将所需的扩展注册为服务，然后对服务使用
+    ``twig.markdown.league_extension`` 标签。

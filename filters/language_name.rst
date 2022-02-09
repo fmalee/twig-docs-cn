@@ -1,10 +1,6 @@
 ``language_name``
 =================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``language_name`` 过滤器。
-
 ``language_name`` 过滤器返回给定两个字母代码的语言的名称：
 
 .. code-block:: twig

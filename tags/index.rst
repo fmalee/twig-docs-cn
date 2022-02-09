@@ -7,11 +7,11 @@
     apply
     autoescape
     block
+    cache
     deprecated
     do
     embed
     extends
-    filter
     flush
     for
     from
@@ -21,7 +21,6 @@
     macro
     sandbox
     set
-    spaceless
     use
     verbatim
     with

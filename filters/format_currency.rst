@@ -1,10 +1,6 @@
 ``format_currency``
 ===================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``format_currency`` 过滤器。
-
 ``format_currency`` 过滤器将数字格式化为对应货币格式：
 
 .. code-block:: twig

@@ -1,9 +1,6 @@
 ``deprecated``
 ==============
 
-.. versionadded:: 2.6
-    在Twig2.6中添加了 ``deprecated`` 标签。
-
 如果在一个模板中使用 ``deprecated`` 标签，Twig会生成一个弃用通知（通过调用PHP函数
 ``trigger_error()``）：
 

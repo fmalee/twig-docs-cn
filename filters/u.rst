@@ -1,10 +1,6 @@
 ``u``
 =====
 
-.. versionadded:: 2.12.1
-
-    Twig 2.12.1中添加了 ``u`` 过滤器。
-
 ``u`` 过滤器将文本封装在一个 Unicode 对象（一个 `Symfony UnicodeString 实例
 <https://symfony.com/doc/current/components/string.html>`_）中，该对象公开了“操作”字符串的方法。
 

@@ -1,10 +1,6 @@
 ``html_classes``
 ================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``html_classes`` 函数。
-
 ``html_classes`` 函数通过有条件地将类名拼接在一起来返回字符串：
 
 .. code-block:: html+twig

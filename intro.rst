@@ -22,7 +22,7 @@ Twig已被用于许多开源项目，比如Symfony、Drupal8、eZPublish、phpBB
 先决条件
 -------------
 
-Twig 2.0 需至少需要 **PHP 7.2.5** 才能运行。
+Twig 3.0 需至少需要 **PHP 7.2.5** 才能运行。
 
 安装
 ------------
@@ -31,7 +31,7 @@ Twig 2.0 需至少需要 **PHP 7.2.5** 才能运行。
 
 .. code-block:: bash
 
-    composer require "twig/twig:^2.0"
+    composer require "twig/twig:^3.0"
 
 基础的API用法
 ---------------

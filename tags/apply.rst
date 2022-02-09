@@ -1,10 +1,6 @@
 ``apply``
 =========
 
-.. versionadded:: 2.9
-
-    Twig 2.9中添加了 ``apply`` 标签。
-
 ``apply`` 标签允许您在模板数据的区块上应用Twig过滤器：
 
 .. code-block:: twig

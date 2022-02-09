@@ -75,38 +75,8 @@
             <input type="{{ type }}" name="{{ name }}" value="{{ value|e }}" size="{{ size }}"/>
         {% endmacro %}
 
-    宏自动导入仅适用于Twig 2.11。对于旧版本，请使用模板名称的特殊 ``_self`` 变量导入宏：
-
-    .. code-block:: html+twig
-
-        {% import _self as forms %}
-
-        <p>{{ forms.input('username') }}</p>
-
-.. note::
-
-    在Twig 2.11之前，当你想在同一个文件的另一个宏中使用一个宏时，你需要在本地导入它：
-
-    .. code-block:: html+twig
-
-        {% macro input(name, value, type, size) %}
-            <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value|e }}" size="{{ size|default(20) }}"/>
-        {% endmacro %}
-
-        {% macro wrapped_input(name, value, type, size) %}
-            {% import _self as forms %}
-
-            <div class="field">
-                {{ forms.input(name, value, type, size) }}
-            </div>
-        {% endmacro %}
-
 宏作用域
 --------------
-
-.. versionadded:: 2.11
-
-    本段中描述的作用范围规则从Twig 2.11开始生效。
 
 无论你是通过 ``import`` 还是 ``from`` 导入宏，作用域规则都是相同的。
 
@@ -121,17 +91,8 @@
 当从 ``macro`` 标签调用 ``import`` 或 ``from``
 时，导入的宏仅在当前宏中定义，它们会覆盖在模板级别定义的同名宏。
 
-.. note::
-
-    在Twig 2.11之前，可以在“子区块”的区块中使用导入的宏。
-    升级到 2.11时，你需要在全局范围内移动该导入或在“子区块”中显式的重新导入宏。
-
 检查是否定义了宏
 ------------------------------
-
-.. versionadded:: 2.11
-
-    在Twig 2.11中添加了对宏的 ``defined`` 测试的支持。
 
 你可以通过 ``defined`` 测试来检查是否定义了一个宏：
 

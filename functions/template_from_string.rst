@@ -1,10 +1,6 @@
 ``template_from_string``
 ========================
 
-.. versionadded:: 2.8
-
-    在Twig 2.8中添加了 ``name`` 参数。
-
 ``template_from_string`` 函数从一个字符串中加载模板：
 
 .. code-block:: twig

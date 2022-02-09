@@ -1,10 +1,6 @@
 ``timezone_name``
 =================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``timezone_name`` 过滤器。
-
 ``timezone_name`` 过滤器返回给定时区标识符的时区名称：
 
 .. code-block:: twig

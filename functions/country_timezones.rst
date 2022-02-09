@@ -1,10 +1,6 @@
 ``country_timezones``
 =====================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``country_timezones`` 函数。
-
 ``country_timezones`` 函数返回与给定国家代码关联的时区名称：
 
 .. code-block:: twig

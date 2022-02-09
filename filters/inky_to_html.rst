@@ -1,10 +1,6 @@
 ``inky_to_html``
 ================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``inky_to_html`` 过滤器。
-
 ``inky_to_html`` 过滤器用于处理 `inky电子邮件模板 <https://github.com/zurb/inky>`_：
 
 .. code-block:: html+twig

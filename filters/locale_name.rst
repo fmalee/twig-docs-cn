@@ -1,10 +1,6 @@
 ``locale_name``
 ===============
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``locale_name`` 过滤器。
-
 ``locale_name`` 过滤器返回给定其两个字母代码的区域名称：
 
 .. code-block:: twig

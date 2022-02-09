@@ -1,10 +1,6 @@
 ``currency_symbol``
 ===================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``currency_symbol`` 过滤器。
-
 ``currency_symbol`` 过滤器返回给定三个字母代码的货币的符号：
 
 .. code-block:: twig

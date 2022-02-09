@@ -5,6 +5,6 @@
 
 .. code-block:: bash
 
-    composer require "twig/twig:^2.0"
+    composer require "twig/twig:^3.0"
 
 .. _`Composer`: https://getcomposer.org/download/

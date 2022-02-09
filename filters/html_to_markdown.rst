@@ -1,10 +1,6 @@
 ``html_to_markdown``
 ====================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``html_to_markdown`` 过滤器。
-
 ``html_to_markdown`` 过滤器将HTML区块转换为Markdown：
 
 .. code-block:: html+twig

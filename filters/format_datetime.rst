@@ -1,10 +1,6 @@
 ``format_datetime``
 ===================
 
-.. versionadded:: 2.12
-
-    Twig 2.12中添加了 ``format_datetime`` 过滤器。
-
 ``format_datetime`` 过滤器格式化一个日期时间：
 
 .. code-block:: twig
@@ -69,3 +65,5 @@
 * ``dateFormat``: 日期格式
 * ``timeFormat``: 时间格式
 * ``pattern``: 日期时间模式
+* ``timezone``: 日期时区
+* ``calendar``: 日历（默认为公历）

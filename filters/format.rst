@@ -9,8 +9,8 @@
 
     {# 如果foo参数等于foo字符串，则输出： I like foo and bar #}
 
-.. _`sprintf`: https://www.php.net/sprintf
-
 .. seealso::
 
     :doc:`replace<replace>`
+
+.. _`sprintf`: https://www.php.net/sprintf
